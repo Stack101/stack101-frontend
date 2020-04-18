@@ -9,7 +9,8 @@
 // Extra small devices (portrait phones, less than 576px)
 // No media query since this is the default css for extra small devices
 body {
-  background: orange;
+  background: white;
+  padding: 26px 20px;
 }
 
 // Small devices (landscape phones, 576px and up)
@@ -39,4 +40,3 @@ body {
     background: black;
   }
 }
-

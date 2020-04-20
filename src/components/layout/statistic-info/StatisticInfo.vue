@@ -5,6 +5,7 @@
     </h2>
     <StackToggleTab @chart-type="setType" />
     <StackBarChart
+      v-if="isStatisticLoaded"
       :key="rerenderIndex"
       :statistic="statistic"
       :height="300"
@@ -15,7 +16,7 @@
 <script>
 import StackToggleTab from '@/components/blocks/stack-toggle-tab/StackToggleTab.vue';
 import StackBarChart from '@/components/blocks/stack-bar-chart/StackBarChart.vue';
-import mockData from '@/mockData.js';
+import { mapActions, mapState, mapGetters } from 'vuex';
 
 export default {
   components: {
@@ -27,21 +28,27 @@ export default {
     return {
       title: '통계 정보',
       type: 'app',
-      statistics: mockData,
       rerenderIndex: 0,
     };
   },
 
   computed: {
+    ...mapState('statistic', ['statistics']),
+    ...mapGetters({ 'getSpecificStatistic': 'statistic/getSpecificStatistic' }),
     statistic() {
-      const result = this.statistics.filter(el => {
-        return el.type === this.type;
-      });
-      return result[0];
+      return this.getSpecificStatistic(this.type);
+    },
+    isStatisticLoaded() {
+      return this.statistics !== '' ? true : false;
     },
   },
 
+  created() {
+    this.setStatistics();
+  },
+
   methods: {
+    ...mapActions({ 'setStatistics': 'statistic/setStatistics' }),
     setType(type) {
       this.type = type;
       this.rerenderIndex += 1;
@@ -65,5 +72,4 @@ export default {
   color: #1A1F27;
   text-align: left;
 }
-
 </style>

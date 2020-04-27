@@ -59,9 +59,11 @@ export default {
 
 <style lang="scss" scoped>
 .l-statistic-info {
-  margin: 32px 0;
+  padding: 20px 20px 0;
+  margin-bottom: 16px;
+  background-color: #FFF;
 
-  & > * {
+  & > *:not(:last-child) {
     margin-bottom: 25px;
   }
 }
@@ -69,6 +71,7 @@ export default {
 .l-statistic-title {
   font-size: 22px;
   font-weight: 600;
+  line-height: 1.4;
   color: #1A1F27;
   text-align: left;
 }

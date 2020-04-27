@@ -10,9 +10,10 @@
         <dl>
           <dt>{{ category.title }}</dt>
           <div>
-            <dd
+            <dd 
               v-for="(tab, index) in category.tabs"
               :key="tab.title"
+              class="b-stack-filter-option"
             > 
               <AppButton
                 :btn-class="tab.type"
@@ -20,7 +21,7 @@
                 :label="tab.title"
               />
             </dd>
-          </div>
+          </div>  
         </dl>
       </li>
     </ul>
@@ -87,24 +88,20 @@ export default {
   padding: 9px 0;
 }
 
-.b-stack-filter-item dl {
-  display: flex;
-  flex-direction: row;
-  align-items: baseline;
+.b-stack-filter-item dl div {
+  overflow: hidden;
 }
 
-.b-stack-filter-item dl > div {
-  width: 82%;
-}
-
-.b-stack-filter-item dl dt {
-  width: 18%;
+.b-stack-filter-item dt {
+  display: block;
+  float: left;
+  margin-top: 4px;
+  width: 64px;
   font-size: 12px;
   color: #3B3B3B; 
 }
-.b-stack-filter-item dl dd {
-  display: inline-block;
-  margin-left: auto;
-  margin: 3px 3px;
+.b-stack-filter-option {
+  float: left;
+  margin: 0 3px 6px;
 }
 </style>

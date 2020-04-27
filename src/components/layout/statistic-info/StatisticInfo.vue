@@ -1,8 +1,6 @@
 <template>
   <section class="l-statistic-info">
-    <h2 class="l-statistic-title">
-      {{ title }}
-    </h2>
+    <AppTitle :label="title" />
     <StackToggleTab @chart-type="setType" />
     <StackBarChart
       v-if="isStatisticLoaded"
@@ -14,12 +12,14 @@
 </template>
 
 <script>
+import AppTitle from '@/components/elements/AppTitle.vue';
 import StackToggleTab from '@/components/blocks/stack-toggle-tab/StackToggleTab.vue';
 import StackBarChart from '@/components/blocks/stack-bar-chart/StackBarChart.vue';
 import { mapActions, mapState, mapGetters } from 'vuex';
 
 export default {
   components: {
+    AppTitle,
     StackToggleTab,
     StackBarChart,
   },
@@ -66,13 +66,5 @@ export default {
   & > *:not(:last-child) {
     margin-bottom: 25px;
   }
-}
-
-.l-statistic-title {
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.4;
-  color: #1A1F27;
-  text-align: left;
 }
 </style>

@@ -1,12 +1,16 @@
 <template>
-  <h2 class="e-title">
+  <h3 class="e-stack-title">
     {{ label }}
-  </h2>
+  </h3>
 </template>
 
 <script>
 export default {
   props: {
+    descClass: {
+      type: String,
+      default: null,
+    },
     label: {
       type: String,
       default: null,
@@ -16,11 +20,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.e-title {
-  font-size: 22px;
+.e-stack-title {
+  font-size: 16px;
+  line-height: 1.45; 
+  color: #3B3B3B;
   font-weight: 600;
-  line-height: 1.4;
-  color: #1A1F27;
-  text-align: left;
 }
 </style>

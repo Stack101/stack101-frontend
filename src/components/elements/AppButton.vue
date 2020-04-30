@@ -27,16 +27,15 @@ export default {
 .e-button {
   display: flex;
   align-items: center;
-  background-color: white;
+  background-color: #FFF;
   position: relative;
   color: #3B3B3B;
   padding: 0 12px;
   height: 24px;
   font-size: 12px;
-  border: 1px solid #DDDDDD;
+  border: 1px solid #DDD;
   box-sizing: border-box;
   border-radius: 40px;
-  letter-spacing: -0.015em;
   white-space: nowrap;
   text-align: center;
 }
@@ -49,8 +48,9 @@ export default {
   }
 
   &:focus {
+    border-color: #FF7F2D;
     background-color: #FF7F2D;
-    color: #ffffff;
+    color: #FFF;
 
     & > *:first-child {
       display: none;
@@ -66,8 +66,9 @@ export default {
   }
 
   &:focus {
+    border-color: #0ACF83;
     background-color: #0ACF83;
-    color: #ffffff;
+    color: #FFF;
 
     & > *:first-child {
       display: none;
@@ -83,8 +84,9 @@ export default {
   }
 
   &:focus {
+    border-color: #4B86FF;
     background-color: #4B86FF;
-    color: #ffffff;
+    color: #FFF;
 
     & > *:first-child {
       display: none;
@@ -100,12 +102,30 @@ export default {
   }
 
   &:focus {
+    border-color: #D971FF;
     background-color: #D971FF;
-    color: #ffffff;
+    color: #FFF;
 
     & > *:first-child {
       display: none;
     }
+  }
+}
+
+.e-button--developer,
+.e-button--designer,
+.e-button--language,
+.e-button--framework,
+.e-button--prototyping,
+.e-button--management,
+.e-button--experience {
+  & > *:first-child {
+    display: none;
+  }
+
+  &:focus {
+    background-color: #DDD;
+    color: #3B3B3B;
   }
 }
 </style>

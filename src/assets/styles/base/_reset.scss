@@ -150,8 +150,8 @@ body {
   font-family: $font-family-NotoSansCJKKr;
   font-weight: $font-weight-normal;
   -webkit-font-smoothing: antialiased; 
-  background: #fff;
   -webkit-text-size-adjust: 100%; //fix for iOS
+  letter-spacing: -0.015em;
 }
 
 ol,

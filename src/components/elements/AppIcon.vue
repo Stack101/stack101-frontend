@@ -15,6 +15,6 @@ export default {
 
 <style lang="scss" scoped>
 .e-icon {
-    color: #312651;
+  color: #312651;
 }
 </style>

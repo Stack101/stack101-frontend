@@ -33,6 +33,14 @@
   otf
 );
 
+@include font-face(
+  $font-family-D2Coding,
+  $font-family-D2Coding-Bold-src,
+  $font-weight-bold,
+  normal,
+  ttf
+);
+
 *,
 *:after,
 *:before {

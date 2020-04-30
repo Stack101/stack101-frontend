@@ -1,7 +1,7 @@
 <template>
   <button
-    class="e-button"
     :class="`e-button--${btnClass}`"
+    @click="$emit('button-click')"
   >
     <span>●</span>
     <span>{{ label }}</span>
@@ -41,6 +41,8 @@ export default {
 }
 
 .e-button--app {
+  @extend .e-button;
+
   & > *:first-child {
     padding-right: 5px;
     font-size: 6.5px;
@@ -59,6 +61,8 @@ export default {
 }
 
 .e-button--frontend {
+  @extend .e-button;
+
   & > *:first-child {
     padding-right: 5px;
     font-size: 6.5px;
@@ -77,6 +81,8 @@ export default {
 }
 
 .e-button--backend {
+  @extend .e-button;
+
   & > *:first-child {
     padding-right: 5px;
     font-size: 6.5px;
@@ -95,6 +101,8 @@ export default {
 }
 
 .e-button--uxui {
+  @extend .e-button;
+
   & > *:first-child {
     padding-right: 5px;
     font-size: 6.5px;
@@ -112,13 +120,22 @@ export default {
   }
 }
 
+.e-button--cancel {
+  width: 43px;
+  height: 36px;
+  border: none;
+}
+
 .e-button--developer,
 .e-button--designer,
 .e-button--language,
 .e-button--framework,
 .e-button--prototyping,
 .e-button--management,
-.e-button--experience {
+.e-button--experience,
+.e-button--cancel {
+  @extend .e-button;
+
   & > *:first-child {
     display: none;
   }

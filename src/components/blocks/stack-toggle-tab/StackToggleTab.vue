@@ -1,6 +1,8 @@
 <template>
   <div class="b-stack-toggle-tab">
-    <ul :class="toggleCondition">
+    <ul
+      :class="toggleCondition"
+    >
       <li
         v-for="(tab, index) in tabs"
         :key="tab.title"
@@ -9,7 +11,7 @@
           :btn-class="tab.type"
           :class="`b-stack-tab-btns--toggle-${index + 1}`"
           :label="tab.title"
-          @click.native="emitType(tab.type)"
+          @button-click="emitType(tab.type)"
         />
       </li>
     </ul>
@@ -24,13 +26,11 @@
 <script>
 import AppButton from '@/components/elements/AppButton.vue';
 import AppIcon from '@/components/elements/AppIcon.vue';
-
 export default {
   components: {
     AppButton,
     AppIcon,
   },
-
   data() {
     return {
       tabs: [
@@ -44,17 +44,19 @@ export default {
       btnClass: 'app',
     };
   },
-
   computed: {
     toggleCondition() {
       return this.isToggle ? 'b-stack-tab-btns--toggle' : 'b-stack-tab-btns';
     },
   },
-
   methods: {
     test() {
       this.isToggle = !this.isToggle;
-      console.log(this.isToggle);
+      if (this.isToggle) {
+        this.iconClass = 'gg-chevron-up';
+      } else {
+        this.iconClass = 'gg-chevron-down';
+      }
     },
     emitType(type) {
       this.$emit('chart-type', type);

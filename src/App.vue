@@ -1,22 +1,52 @@
 <template>
   <div id="app">
-    <AppMain />
+    <AppHeader @open-search="changeSearchStatus" />
+    <router-view />
+
+    <transition
+      name="slide"
+      mode="out-in"
+    >
+      <AppSearch
+        v-if="onSearch"
+        @close-search="changeSearchStatus"
+      />
+    </transition>
   </div>
 </template>
 
 <script>
-import AppMain from '@/views/AppMain.vue';
+import AppHeader from '@/components/layout/app-header/AppHeader.vue';
+import AppSearch from '@/views/AppSearch.vue';
 
 export default {
   components: {
-    AppMain,
+    AppHeader,
+    AppSearch,
+  },
+
+  data() {
+    return {
+      onSearch: false,
+    };
+  },
+
+  methods: {
+    changeSearchStatus() {
+      this.onSearch = !this.onSearch;
+    },
   },
 };
 </script>
 
-<style lang="scss">
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+<style lang="scss" scoped>
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity 0.7s, transform 0.3s;
+}
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+  transform: translateY(90%);
 }
 </style>

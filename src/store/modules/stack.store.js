@@ -12,8 +12,12 @@ const mutations = {
 
 const actions = {
   async setStacks({ commit }) {
-    const { data } = await stackAPI.getStacks();
-    commit('SET_STACKS', data);
+    const result = await stackAPI.getStacks();
+    if (!result.isError) {
+      commit('SET_STACKS', result.item);
+    } else {
+      console.log(result.item.statusCode);
+    }
   },
 };
 

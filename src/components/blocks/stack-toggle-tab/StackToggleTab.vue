@@ -8,17 +8,18 @@
         :key="tab.title"
       >
         <AppButton
+          ref="btn"
           :btn-class="tab.type"
           :class="`b-stack-tab-btns--toggle-${index + 1}`"
           :label="tab.title"
-          @button-click="emitType(tab.type)"
+          @button-click="emitType(tab.type, index)"
         />
       </li>
     </ul>
     <AppIcon
       class="b-stack-toggle-btn"
       :icon-class="iconClass"
-      @click.native="test"
+      @click.native="toggleDropDown"
     />
   </div>
 </template>
@@ -50,7 +51,7 @@ export default {
     },
   },
   methods: {
-    test() {
+    toggleDropDown() {
       this.isToggle = !this.isToggle;
       if (this.isToggle) {
         this.iconClass = 'gg-chevron-up';
@@ -58,7 +59,8 @@ export default {
         this.iconClass = 'gg-chevron-down';
       }
     },
-    emitType(type) {
+    emitType(type, index) {
+      this.$refs.btn[index].$el.focus();
       this.$emit('chart-type', type);
     },
   },

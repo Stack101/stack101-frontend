@@ -3,7 +3,6 @@
     <AppTitle :label="title" />
     <StackToggleTab @chart-type="setType" />
     <StackBarChart
-      v-if="isStatisticLoaded"
       :key="rerenderIndex"
       :statistic="statistic"
       :height="chartHeight"
@@ -15,7 +14,13 @@
 import AppTitle from '@/components/elements/AppTitle.vue';
 import StackToggleTab from '@/components/blocks/stack-toggle-tab/StackToggleTab.vue';
 import StackBarChart from '@/components/blocks/stack-bar-chart/StackBarChart.vue';
-import { mapActions, mapState, mapGetters } from 'vuex';
+import mockData from '@/mockData.js';
+// import { mapActions, mapState, mapGetters } from 'vuex';
+
+      // v-if="isStatisticLoaded"
+      // :key="rerenderIndex"
+      // :statistic="statistic"
+      // :height="chartHeight"
 export default {
   components: {
     AppTitle,
@@ -30,23 +35,30 @@ export default {
     };
   },
   computed: {
-    ...mapState('statistic', ['statistics']),
-    ...mapGetters({ 'getSpecificStatistic': 'statistic/getSpecificStatistic' }),
+    // ...mapState('statistic', ['statistics']),
+    // ...mapGetters({ 'getSpecificStatistic': 'statistic/getSpecificStatistic' }),
+    // statistic() {
+    //   return this.getSpecificStatistic(this.type);
+    // },
     statistic() {
-      return this.getSpecificStatistic(this.type);
+      // Mock
+      const test = mockData.filter(el => {
+        return el.type === this.type;
+      });
+      return test[0];
     },
     chartHeight() {
       return this.statistic.labels.length * 25;
     },
-    isStatisticLoaded() {
-      return this.statistics !== '' ? true : false;
-    },
+    // isStatisticLoaded() {
+    //   return this.statistics !== '' ? true : false;
+    // },
   },
   created() {
-    this.setStatistics();
+    // this.setStatistics();
   },
   methods: {
-    ...mapActions({ 'setStatistics': 'statistic/setStatistics' }),
+    // ...mapActions({ 'setStatistics': 'statistic/setStatistics' }),
     setType(type) {
       this.type = type;
       this.rerenderIndex += 1;

@@ -1,15 +1,17 @@
 <template>
   <Header class="l-app-header">
     <div class="l-header-start">
-      <div v-show="isDetail">
-        test
-      </div>
+      <AppIcon
+        v-show="isDetailView"
+        :icon-class="backIcon"
+        @click.native="backPage"
+      />
     </div>
 
     <div class="l-header-center">
-      <div v-show="isDetail">
-        test2
-      </div>
+      <h2 v-show="isDetailView">
+        {{ headerTitle }}
+      </h2>
     </div>
 
     <div class="l-header-end">
@@ -28,27 +30,49 @@
 
 <script>
 import AppIcon from '@/components/elements/AppIcon.vue';
+
 export default {
   components: {
     AppIcon,
   },
-  props: {
-    isDetails: {
-      type: Boolean,
-      default: false,
-    },
-  },
+
   data() {
     return {
       menuIcon: 'gg-menu',
       searchIcon:'gg-search',
       backIcon: 'gg-chevron-left',
-      isDetail: false,
     };
   },
+
+  computed: {
+    isDetailView() {
+      const condition = this.$route.path === '/stack' || this.$route.path === '/company';
+      return condition ? true : false;
+    },
+
+    headerTitle() {
+      let title = '';
+      switch (this.$route.path) {
+        case '/stack':
+          title = '기술 스택 상세';
+          break;
+        case '/company':
+          title = '회사 상세';
+          break;
+        default:
+          break;
+      }
+      return title;
+    },
+  },
+
   methods: {
     openSearch() {
       this.$emit('open-search');
+    },
+
+    backPage() {
+      this.$router.go(-1);
     },
   },
 };
@@ -63,10 +87,16 @@ export default {
   padding: 32px 20px 12px 20px;
   background-color: #FFF;
 }
+
+.l-header-start {
+  justify-self: start;
+}
+
 .l-header-end {
   display: grid;
   grid-template-columns: 32px 32px;
 }
+
 .l-header-icon {
   justify-self: center;
   align-self: center;

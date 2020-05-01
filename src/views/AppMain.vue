@@ -1,8 +1,8 @@
 <template>
-  <div class="v-app-main">
+  <main class="v-app-main">
     <StatisticInfo />
     <StackInfo />
-  </div>
+  </main>
 </template>
 
 <script>

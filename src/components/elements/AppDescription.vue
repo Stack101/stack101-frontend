@@ -3,7 +3,7 @@
     class="e-description"
     :class="`e--description--${descClass}`"
   >
-    {{ label }}개의 기업이 사용 중입니다.
+    {{ label }}
   </p>
 </template>
 

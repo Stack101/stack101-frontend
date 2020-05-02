@@ -1,27 +1,30 @@
 <template>
   <div class="b-list-item">
     <ul>
-      <li>
-        <router-link to="/">
-          <AppThumbnail 
+      <li
+				v-for="(item, index) in itemList"
+				:key="index"
+			>
+        <router-link :to="itemPath(item._id.$oid)">
+          <AppThumbnail
             :thumbnail-class="thumbnailClass"
           />
           <div class="container">
             <FavoriteTitle
               v-if="isDetail"
-              :label="favoriteTitle"
+              :title="item.name"
             />
             <AppStackTitle
               v-else
-              :label="stackTitle"
+              :label="item.name"
             />
-            <AppDescription 
-              :label="descriptionLabel"
+            <AppDescription
+              :label="descriptionLabel(item)"
             />
           </div>
         </router-link>
       </li>
-    </ul> 
+    </ul>
   </div>
 </template>
 
@@ -44,21 +47,38 @@ export default {
       type: Boolean,
       default: false,
     },
+
+		itemList: {
+			type: Array,
+			default: undefined,
+		},
   },
 
   data() {
     return {
       thumbnailClass: 'medium',
-      stackTitle: 'Node.js',
-      favoriteTitle: 'Google',
-      totalNumber: '12',
     };
   },
 
-  computed: {
-    descriptionLabel() {
-      return `${this.totalNumber}개의 기업이 사용 중입니다.`;
+  methods: {
+    descriptionLabel(item) {
+			const isStackPath = this.$route.path.includes('stack');
+			if (!isStackPath) {
+				const totalNum = item.companies.length;
+				return `${totalNum}개의 기업이 사용 중입니다.`;
+			} else {
+				return `${item.name}외 ${item.cnt}개 사용 중입니다.`;
+			}
     },
+
+		itemPath(id) {
+			const isStackPath = this.$route.path.includes('stack');
+			if (isStackPath) {
+				return `/company/${id}`;
+			} else {
+				return `/stack/${id}`;
+			}
+		},
   },
 };
 </script>
@@ -69,7 +89,7 @@ export default {
   ul li {
     position: relative;
     padding: 24px 0;
-    
+
     &::after {
       content: '';
       position: absolute;
@@ -77,7 +97,7 @@ export default {
       bottom: 0;
       width: 100%;
       height: 0.5px;
-      background-color: #D6D6D6; 
+      background-color: #D6D6D6;
     }
 
     > a {

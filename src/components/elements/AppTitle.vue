@@ -1,5 +1,5 @@
 <template>
-  <h2 class="e-title">
+  <h2 :class="`e-title--${titleClass}`">
     {{ label }}
   </h2>
 </template>
@@ -11,16 +11,24 @@ export default {
       type: String,
       default: null,
     },
+    titleClass: {
+      type: String,
+      default: 'default',
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 .e-title {
-  font-size: 22px;
   font-weight: 600;
   line-height: 1.4;
   color: #1A1F27;
   text-align: left;
+
+  &--default {
+    @extend .e-title;
+    font-size: 22px;
+  }
 }
 </style>

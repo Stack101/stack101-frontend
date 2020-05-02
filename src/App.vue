@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <AppHeader @open-search="changeSearchStatus" />
+    <MainHeader @open-search="changeSearchStatus" />
     <router-view />
 
     <transition
@@ -16,12 +16,12 @@
 </template>
 
 <script>
-import AppHeader from '@/components/layout/app-header/AppHeader.vue';
+import MainHeader from '@/components/layout/main-header/MainHeader.vue';
 import AppSearch from '@/views/AppSearch.vue';
 
 export default {
   components: {
-    AppHeader,
+    MainHeader,
     AppSearch,
   },
 

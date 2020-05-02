@@ -123,6 +123,8 @@ export default {
 .e-button--cancel {
   width: 43px;
   height: 36px;
+	font-size: 16px;
+	font-weight: 300;
   border: none;
 }
 

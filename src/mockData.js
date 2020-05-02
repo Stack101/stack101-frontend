@@ -72,31 +72,37 @@ export default (function() {
     {
       type: 'backend',
       labels: [
-        'React Native',
-        'Flutter',
-        'Swift',
-        'Objective-C',
-        'Kotlin',
-        'Java',
-        'NativeScript'
+        "Java",
+        "Kotlin",
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "PHP",
+        "Ruby",
+        "C#",
+        "Go"
       ],
       backgroundColor: [
-        '#FF7F2D',
-        '#FF9957',
-        '#FFB281',
-        '#FFCCAB',
-        '#FFD9C0',
-        '#FFE5D5',
-        '#FEEEE3'
+        "#546FFF",
+        "#4B86FF",
+        "#548CFF",
+        "#5D92FF",
+        "#6F9EFF",
+        "#7DA8FF",
+        "#8AB0FF",
+        "#99BAFF",
+        "#A5C2FF"
       ],
       data: [
-        50,
+        70,
+        60,
+        40,
         30,
         20,
         10,
-        8,
-        7,
-        6
+        5,
+        4,
+        3
       ],
     },
     {

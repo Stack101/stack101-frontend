@@ -1,40 +1,53 @@
 <template>
   <form class="b-search-form">
-    <AppInput
-      v-show="searchActive"
-      class="b-search-form__input"
-      :type="type"
-      :placeholder="placeholder"
-    />
-    <AppIcon
-      :icon-class="searchIcon"
-      @click.native="activateSearch"
-    />
+    <div class="b-search-bar">
+      <AppIcon
+        class="b-search-icon"
+        :icon-class="searchIcon"
+      />
+      <input
+        v-model="searchMsg"
+        class="b-search-form__input"
+        :type="type"
+        :placeholder="placeholder"
+      >
+      <AppIcon
+        v-show="isTyping"
+        class="b-search-icon"
+        :icon-class="closeIcon"
+        @click.native="initMsg"
+      />
+    </div>
   </form>
 </template>
 
 <script>
 import AppIcon from '@/components/elements/AppIcon.vue';
-import AppInput from '@/components/elements/AppInput.vue';
-
 export default {
   components: {
     AppIcon,
-    AppInput,
   },
-
   data() {
     return {
       searchIcon:'gg-search',
       type: 'string',
-      placeholder: 'test',
-      searchActive: false,
+      placeholder: '스택/기업을 입력해주세요.',
+      closeIcon: 'gg-close-o',
+      searchMsg: '',
     };
   },
-
+  computed: {
+    isTyping() {
+      if (this.searchMsg) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
   methods: {
-    activateSearch() {
-      !this.searchActive ? this.searchActive = true : this.searchActive = false;
+    initMsg() {
+      this.searchMsg = '';
     },
   },
 };
@@ -42,20 +55,23 @@ export default {
 
 <style lang="scss" scoped>
 .b-search-form {
-  display: flex;
-  position: relative;
-  width: 100%;
-  align-items: center;
-  justify-content: flex-end;
-
   &__input {
-    position: fixed;
-    width: calc(100% - 80px);
-    background-color: black;
-    left: 50%;
-    transform: translateX(-50%);
+    border: none;
+    background-color: #F3F3F3;
+    margin: 0;
+    padding: 0;
   }
 }
+.b-search-bar {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 32px 1fr 32px;
+  background-color: #F3F3F3;
+  height: 100%;
+  border-radius: 4px;
+}
+.b-search-icon {
+  margin: 0 auto;
+}
+// 전체가 100%일때 -40px 
 </style>
-
-

@@ -14,7 +14,7 @@ const actions = {
   async setStatistics({ commit }) {
     const result = await statisticAPI.getStatistics();
     if (!result.isError) {
-      await commit('SET_STATISTICS', result.item);
+      commit('SET_STATISTICS', result.item);
     } else {
       console.log(result.item.statusCode);
       // TODO

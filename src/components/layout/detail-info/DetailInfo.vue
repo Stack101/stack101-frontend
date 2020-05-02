@@ -4,7 +4,11 @@
       :thumbnail-class="thumbnailSize"
       :thumbnail-img-src="thumbnailSrc"
     />
-    <FavoriteTitle class="v-detail-stack--title" />
+    <FavoriteTitle
+			class="v-detail-stack--title"
+			:title="title"
+			:strong-class="strongClass"
+		/>
     <AppDescription :label="description" />
   </section>
 </template>
@@ -21,11 +25,23 @@ export default {
     AppDescription,
   },
 
+	props: {
+		title: {
+			type: String,
+			default: undefined,
+		},
+
+		description: {
+			type: String,
+			default: undefined,
+		},
+	},
+
   data() {
     return {
       thumbnailSize: 'medium',
       thumbnailSrc: 'https://hackernoon.com/drafts/yj1e929ns.png',
-      description: 'A dynamic, open source programming language with a focus on simplicity and productivity. It has an elegant syntax that is natural to read and easy to write.',
+			strongClass: 'title',
     };
   },
 };

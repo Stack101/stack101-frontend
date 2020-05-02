@@ -1,13 +1,54 @@
 <template>
-<div></div>
+	<div class="e-stack-card">
+		<AppThumbnail :thumbnail-class="thumbnailSize" />
+		<AppStrong
+			:strong-class="strongClass"
+			:label="title"
+		/>
+	</div>
 </template>
 
 <script>
-export default {
+import AppThumbnail from "@/components/elements/AppThumbnail.vue";
+import AppStrong from "@/components/elements/AppStrong.vue";
 
+export default {
+	components: {
+		AppThumbnail,
+		AppStrong,
+	},
+
+	props: {
+		title: {
+			type: String,
+			default: '',
+		},
+	},
+
+	data() {
+		return {
+			thumbnailSize: 'small',
+			strongClass: "card",
+		};
+	},
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.e-stack-card {
+	display: grid;
+	justify-items: center;
+	align-items: center;
+	width: 104px;
+	height: 84px;
+	background-color: #fff;
+	border-radius: 10px;
 
+	& > *:first-child {
+		align-self: end;
+	}
+	& > *:last-child {
+		align-self: start;
+	}
+}
 </style>

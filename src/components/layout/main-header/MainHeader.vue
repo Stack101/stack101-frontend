@@ -38,7 +38,7 @@ export default {
 
   data() {
     return {
-      menuIcon: 'gg-menu',
+      menuIcon: 'gg-bookmark',
       searchIcon:'gg-search',
       backIcon: 'gg-chevron-left',
     };
@@ -46,17 +46,19 @@ export default {
 
   computed: {
     isDetailView() {
-      const condition = this.$route.path === '/stack' || this.$route.path === '/company';
+      const condition = this.checkPath('stack') || this.checkPath('company');
       return condition ? true : false;
     },
-
+		currentPath() {
+			return this.$route.path.split('/')[1];
+		},
     headerTitle() {
       let title = '';
-      switch (this.$route.path) {
-        case '/stack':
+      switch (this.currentPath) {
+        case 'stack':
           title = '기술 스택 상세';
           break;
-        case '/company':
+        case 'company':
           title = '회사 상세';
           break;
         default:
@@ -70,10 +72,12 @@ export default {
     openSearch() {
       this.$emit('open-search');
     },
-
     backPage() {
       this.$router.go(-1);
     },
+		checkPath(str) {
+			return this.$route.path.includes(str);
+		},
   },
 };
 </script>

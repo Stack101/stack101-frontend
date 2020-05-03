@@ -1,24 +1,52 @@
 <template>
   <div class="b-stack-filter-result">
-    <AppCountTitle :label="countLabel" />
-    <ListItem :item-list="stackList" />
+		<AppText
+			v-if="isSearchResult"
+			:label="textLabel"
+			:desc-class="textClass"
+		/>
+    <AppCountTitle
+			v-else
+			:label="countLabel"
+		/>
+    <ListItem
+			:item-list="stackList"
+			:is-main="isMain"
+		/>
   </div>
 </template>
 
 <script>
 import AppCountTitle from '@/components/elements/AppCountTitle.vue';
+import AppText from '@/components/elements/AppText.vue';
 import ListItem from '@/components/blocks/list-item/ListItem.vue';
-import mockStack from '@/mockStack.js';
 
 export default {
   components: {
     AppCountTitle,
     ListItem,
+		AppText,
   },
+
+	props: {
+		stackList: {
+			type: Array,
+			default: null,
+		},
+		isSearchResult: {
+			type: Boolean,
+			default: false,
+		},
+		isMain: {
+			type: Boolean,
+			default: false,
+		},
+	},
 
 	data() {
 		return {
-			stackList: mockStack,
+			textLabel: '스택',
+			textClass: 'search-result',
 		};
 	},
 

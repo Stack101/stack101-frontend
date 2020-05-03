@@ -14,7 +14,7 @@
 import AppTitle from '@/components/elements/AppTitle.vue';
 import StackToggleTab from '@/components/blocks/stack-toggle-tab/StackToggleTab.vue';
 import StackBarChart from '@/components/blocks/stack-bar-chart/StackBarChart.vue';
-import mockData from '@/mockData.js';
+import mockChart from '@/mockChart.js';
 // import { mapActions, mapState, mapGetters } from 'vuex';
 
       // v-if="isStatisticLoaded"
@@ -42,7 +42,7 @@ export default {
     // },
     statistic() {
       // Mock
-      const test = mockData.filter(el => {
+      const test = mockChart.filter(el => {
         return el.type === this.type;
       });
       return test[0];

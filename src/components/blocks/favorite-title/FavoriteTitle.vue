@@ -1,25 +1,31 @@
 <template>
   <div class="b-favorite-title">
-    <AppTitle
-      :label="titleLabel"
-    />
+    <AppStrong
+			:label="title"
+			:strong-class="strongClass"
+		/>
     <span>⭐️</span>
   </div>
 </template>
 
 <script>
-import AppTitle from '@/components/elements/AppTitle.vue';
+import AppStrong from '@/components/elements/AppStrong.vue';
 
 export default {
   components: {
-    AppTitle,
+		AppStrong,
   },
 
-  data() {
-    return {
-      titleLabel: 'Ruby',
-    };
-  },
+	props: {
+		title: {
+			type: String,
+			default: undefined,
+		},
+		strongClass: {
+			type: String,
+			default: 'default',
+		},
+	},
 };
 </script>
 

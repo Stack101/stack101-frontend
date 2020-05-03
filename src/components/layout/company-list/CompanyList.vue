@@ -1,7 +1,11 @@
+<script src="../../../mockStack.js"></script>
 <template>
   <section class="l-company-list">
     <AppCountTitle :label="totalNum" />
-    <ListItem :is-detail="isDetail" />
+    <ListItem
+			:is-detail="isDetail"
+			:item-list="list"
+		/>
   </section>
 </template>
 
@@ -15,12 +19,24 @@ export default {
     ListItem,
   },
 
+	props: {
+		list: {
+			type: Array,
+			default: undefined,
+		},
+	},
+
   data() {
     return {
-      totalNum: '23',
       isDetail: true,
     };
   },
+
+	computed: {
+		totalNum() {
+			return String(this.list.length);
+		},
+	},
 };
 </script>
 

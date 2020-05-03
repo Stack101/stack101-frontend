@@ -1,12 +1,12 @@
 <template>
-  <div 
+  <div
     class="e-thumbnail"
     :class="`e-thumbnail--${thumbnailClass}`"
   >
-    <span 
+    <span
       class="e-thumbnail-img"
       :style="`background-image:${thumbnailImgSrc}`"
-    /> 
+    />
   </div>
 </template>
 
@@ -47,6 +47,11 @@ export default {
     height: 56px;
   }
 
+	&--small {
+		width: 36px;
+		height: 36px;
+	}
+
   & > .e-thumbnail-img {
     display: block;
     width: 100%;
@@ -56,5 +61,5 @@ export default {
     background-position: 50%;
     background-size: cover;
   }
-} 
+}
 </style>

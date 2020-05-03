@@ -13,12 +13,12 @@ const routes = [
     component: AppMain,
   },
   {
-    path: '/stack',
+    path: '/stack/:id',
     name: 'Stack',
     component: AppDetailStack,
   },
   {
-    path: '/company',
+    path: '/company/:id',
     name: 'Company',
     component: AppDetailCompany,
   }

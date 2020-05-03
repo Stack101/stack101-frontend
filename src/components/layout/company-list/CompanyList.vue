@@ -1,7 +1,14 @@
-<script src="../../../mockStack.js"></script>
 <template>
   <section class="l-company-list">
-    <AppCountTitle :label="totalNum" />
+		<AppText
+			v-if="isSearchResult"
+			:label="textLabel"
+			:desc-class="textClass"
+		/>
+    <AppCountTitle
+			v-else
+			:label="totalNum"
+		/>
     <ListItem
 			:is-detail="isDetail"
 			:item-list="list"
@@ -11,12 +18,14 @@
 
 <script>
 import AppCountTitle from '@/components/elements/AppCountTitle.vue';
+import AppText from '@/components/elements/AppText.vue';
 import ListItem from '@/components/blocks/list-item/ListItem.vue';
 
 export default {
   components: {
     AppCountTitle,
     ListItem,
+		AppText,
   },
 
 	props: {
@@ -24,13 +33,22 @@ export default {
 			type: Array,
 			default: undefined,
 		},
+		isDetail: {
+			type: Boolean,
+			default: false,
+		},
+		isSearchResult: {
+			type: Boolean,
+			default: false,
+		},
 	},
 
-  data() {
-    return {
-      isDetail: true,
-    };
-  },
+	data() {
+		return {
+			textLabel: '회사',
+			textClass: 'search-result',
+		};
+	},
 
 	computed: {
 		totalNum() {
@@ -44,6 +62,6 @@ export default {
 .l-company-list {
   background-color: #fff;
   margin-top: 16px;
-  padding: 32px 20px;
+	padding: 32px 0;
 }
 </style>

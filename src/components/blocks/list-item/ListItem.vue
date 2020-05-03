@@ -43,11 +43,18 @@ export default {
   },
 
   props: {
+		isMain: {
+			type: Boolean,
+			default: false,
+		},
     isDetail: {
       type: Boolean,
       default: false,
     },
-
+		isSearchResult: {
+			type: Boolean,
+			default: false,
+		},
 		itemList: {
 			type: Array,
 			default: undefined,
@@ -62,15 +69,22 @@ export default {
 
   methods: {
     descriptionLabel(item) {
-			const isStackPath = this.$route.path.includes('stack');
-			if (!isStackPath) {
-				const totalNum = item.companies.length;
-				return `${totalNum}개의 기업이 사용 중입니다.`;
-			} else {
-				return `${item.name}외 ${item.cnt}개 사용 중입니다.`;
+			let result;
+			let totalNum;
+			switch (true) {
+				case this.isMain:
+					totalNum = item.companies.length;
+					result = `${totalNum}개의 기업이 사용 중입니다.`;
+					break;
+				case this.isDetail:
+					result = `${item.name}외 ${item.cnt}개 사용 중입니다.`;
+					break;
+				default:
+					result = '임시 텍스트';
+					break;
 			}
+			return result;
     },
-
 		itemPath(id) {
 			const isStackPath = this.$route.path.includes('stack');
 			if (isStackPath) {

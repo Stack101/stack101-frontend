@@ -1,5 +1,5 @@
 <template>
-  <p 
+  <p
     class="e-description"
     :class="`e--description--${descClass}`"
   >
@@ -27,5 +27,12 @@ export default {
   font-size: 14px;
   line-height: 1.45;
   color: #666;
+}
+
+.e-description--search-result {
+	font-size: 16px;
+	font-weight: 500;
+	color: #8C8A94;
+	text-align: center;
 }
 </style>

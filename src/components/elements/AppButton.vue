@@ -120,14 +120,6 @@ export default {
   }
 }
 
-.e-button--cancel {
-  width: 43px;
-  height: 36px;
-	font-size: 16px;
-	font-weight: 300;
-  border: none;
-}
-
 .e-button--developer,
 .e-button--designer,
 .e-button--language,
@@ -135,7 +127,8 @@ export default {
 .e-button--prototyping,
 .e-button--management,
 .e-button--experience,
-.e-button--cancel {
+.e-button--cancel,
+.e-button--delete {
   @extend .e-button;
 
   & > *:first-child {
@@ -146,5 +139,18 @@ export default {
     background-color: #DDD;
     color: #3B3B3B;
   }
+}
+
+.e-button--cancel {
+	width: 43px;
+	height: 36px;
+	font-size: 16px;
+	font-weight: 300;
+	border: none;
+}
+
+.e-button--delete {
+	border: none;
+	padding: 0;
 }
 </style>

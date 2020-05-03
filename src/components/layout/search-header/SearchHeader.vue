@@ -1,6 +1,6 @@
 <template>
   <header class="l-search-header">
-    <SearchForm />
+    <SearchForm @search-msg="ascSearchMsg" />
     <AppButton
       class="l-search-btn--cancel"
       :class="cancelClass"
@@ -13,11 +13,13 @@
 <script>
 import SearchForm from '@/components/blocks/search-form/SearchForm.vue';
 import AppButton from '@/components/elements/AppButton.vue';
+
 export default {
   components: {
     SearchForm,
     AppButton,
   },
+
   data() {
     return {
       cancelClass: 'e-button--cancel',
@@ -28,6 +30,9 @@ export default {
     closeSearch() {
       this.$emit('close-search');
     },
+		ascSearchMsg(msg) {
+			this.$emit('search-msg', msg);
+		},
   },
 };
 </script>

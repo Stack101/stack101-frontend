@@ -1,5 +1,8 @@
 <template>
-  <form class="b-search-form">
+  <form
+		class="b-search-form"
+		@submit.prevent="ascSearchMsg"
+	>
     <div class="b-search-bar">
       <AppIcon
         class="b-search-icon"
@@ -10,7 +13,7 @@
         class="b-search-form__input"
         :type="type"
         :placeholder="placeholder"
-      >
+      />
       <AppIcon
         v-show="isTyping"
         class="b-search-icon"
@@ -23,10 +26,14 @@
 
 <script>
 import AppIcon from '@/components/elements/AppIcon.vue';
+// import AppInput from '@/components/elements/AppInput.vue';
+
 export default {
   components: {
     AppIcon,
+		// AppInput,
   },
+
   data() {
     return {
       searchIcon:'gg-search',
@@ -36,6 +43,7 @@ export default {
       searchMsg: '',
     };
   },
+
   computed: {
     isTyping() {
       if (this.searchMsg) {
@@ -45,10 +53,14 @@ export default {
       }
     },
   },
+
   methods: {
     initMsg() {
       this.searchMsg = '';
     },
+		ascSearchMsg() {
+			this.$emit('search-msg', this.searchMsg);
+		},
   },
 };
 </script>
@@ -73,5 +85,4 @@ export default {
 .b-search-icon {
   margin: 0 auto;
 }
-// 전체가 100%일때 -40px 
 </style>

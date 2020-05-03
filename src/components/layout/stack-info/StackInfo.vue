@@ -3,7 +3,10 @@
     <AppTitle :label="title" />
     <StackFilterDropdown />
     <StackFilterList />
-    <StackResult />
+    <StackResult
+			:stack-list="stack"
+			:is-main="isMain"
+		/>
   </section>
 </template>
 
@@ -12,6 +15,7 @@ import AppTitle from '@/components/elements/AppTitle.vue';
 import StackFilterDropdown from '@/components/blocks/stack-filter-dropdown/StackFilterDropdown.vue';
 import StackFilterList from '@/components/blocks/stack-filter-list/StackFilterList.vue';
 import StackResult from '@/components/blocks/stack-result/StackResult.vue';
+import mockStack from '@/mockStack.js';
 
 export default {
   components: {
@@ -24,6 +28,8 @@ export default {
   data() {
     return {
       title: '기술스택 정보',
+			stack: mockStack,
+			isMain: true,
     };
   },
 

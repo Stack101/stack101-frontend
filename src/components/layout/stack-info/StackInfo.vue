@@ -2,7 +2,7 @@
   <section class="l-stack-info">
     <AppTitle :label="title" />
     <StackFilterDropdown />
-    <StackFilterList />
+    <!-- <StackFilterList /> -->
     <StackResult
 			:stack-list="stack"
 			:is-main="isMain"
@@ -13,7 +13,7 @@
 <script>
 import AppTitle from '@/components/elements/AppTitle.vue';
 import StackFilterDropdown from '@/components/blocks/stack-filter-dropdown/StackFilterDropdown.vue';
-import StackFilterList from '@/components/blocks/stack-filter-list/StackFilterList.vue';
+// import StackFilterList from '@/components/blocks/stack-filter-list/StackFilterList.vue';
 import StackResult from '@/components/blocks/stack-result/StackResult.vue';
 import mockStack from '@/mockStack.js';
 
@@ -21,7 +21,7 @@ export default {
   components: {
     AppTitle,
     StackFilterDropdown,
-    StackFilterList,
+    // StackFilterList,
     StackResult,
   },
 

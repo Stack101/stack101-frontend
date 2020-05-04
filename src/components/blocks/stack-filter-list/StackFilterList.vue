@@ -70,11 +70,9 @@ export default {
             { title: 'Experience', type: 'experience' }
           ],
         }
-      ],
-      
+      ], 
     };
-  }, 
-  
+  },  
 };
 </script>
 
@@ -86,20 +84,21 @@ export default {
 
 .b-stack-filter-item  {
   padding: 9px 0;
+
+  & dl div {
+    overflow: hidden;
+  }
+
+  & dt {
+    display: block;
+    float: left;
+    margin-top: 4px;
+    width: 64px;
+    font-size: 12px;
+    color: #3B3B3B; 
+  }
 }
 
-.b-stack-filter-item dl div {
-  overflow: hidden;
-}
-
-.b-stack-filter-item dt {
-  display: block;
-  float: left;
-  margin-top: 4px;
-  width: 64px;
-  font-size: 12px;
-  color: #3B3B3B; 
-}
 .b-stack-filter-option {
   float: left;
   margin: 0 3px 6px;

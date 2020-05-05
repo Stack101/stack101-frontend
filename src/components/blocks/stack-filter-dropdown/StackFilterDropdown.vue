@@ -1,6 +1,8 @@
 <template>
   <div class="b-stack-filter">
-    <ul class="b-stack-filter-dropdown">
+    <ul 
+      class="b-stack-filter-dropdown" 
+    >
       <li
         v-for="tab in tabs"
         :key="tab.title"
@@ -60,6 +62,10 @@ export default {
         this.iconClass = 'gg-chevron-down';
       }
     },
+
+    // resultsFilter(entry) {
+
+    // }
   },
 };
 </script>

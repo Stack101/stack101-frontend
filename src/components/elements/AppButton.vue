@@ -2,6 +2,7 @@
   <button
     :class="`e-button--${btnClass}`"
     @click="$emit('button-click')"
+    type="button"
   >
     <span>●</span>
     <span>{{ label }}</span>
@@ -49,6 +50,7 @@ export default {
     color: #FF7F2D;
   }
 
+  &.active,
   &:focus {
     border-color: #FF7F2D;
     background-color: #FF7F2D;
@@ -69,6 +71,7 @@ export default {
     color: #0ACF83;
   }
 
+  &.active,
   &:focus {
     border-color: #0ACF83;
     background-color: #0ACF83;
@@ -88,7 +91,8 @@ export default {
     font-size: 6.5px;
     color: #4B86FF;
   }
-
+  
+  &.active,
   &:focus {
     border-color: #4B86FF;
     background-color: #4B86FF;
@@ -109,6 +113,7 @@ export default {
     color: #D971FF;
   }
 
+  &.active,
   &:focus {
     border-color: #D971FF;
     background-color: #D971FF;
@@ -135,6 +140,7 @@ export default {
     display: none;
   }
 
+  &.active,
   &:focus {
     background-color: #DDD;
     color: #3B3B3B;

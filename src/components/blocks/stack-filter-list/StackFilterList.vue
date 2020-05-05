@@ -2,9 +2,9 @@
   <div class="b-stack-filter-list">
     <ul>
       <li
-        v-for="(category, i) in categories"
-        :key="category.title"
-        :class="`b-stack-filter-item-${i + 1}`"
+        v-for="(category, index) in categories"
+        :key="category.index"
+        :class="`b-stack-filter-item-${index + 1}`"
         class="b-stack-filter-item"
       >
         <dl>
@@ -12,13 +12,13 @@
           <div>
             <dd 
               v-for="(tab, index) in category.tabs"
-              :key="tab.title"
-              class="b-stack-filter-option"
+              :key="tab.index"
             > 
               <AppButton
                 :btn-class="tab.type"
-                :class="`b-stack-tab-btns--toggle-${index + 1}`"
                 :label="tab.title"
+                @click="toggleSelected"
+                :class="[{ active: isActive }, `b-stack-filter-btns--${index + 1}`]"
               />
             </dd>
           </div>  
@@ -37,7 +37,7 @@ export default {
   },
 
   data() {
-    return { 
+    return {
       categories: [
         {
           title: '직군',
@@ -70,9 +70,17 @@ export default {
             { title: 'Experience', type: 'experience' }
           ],
         }
-      ], 
+      ],
+      isActive: false,
     };
-  },  
+  },
+
+  methods: {
+    toggleSelected() {
+      this.isActive = !this.isActive;
+    },
+  },
+  
 };
 </script>
 
@@ -97,10 +105,10 @@ export default {
     font-size: 12px;
     color: #3B3B3B; 
   }
-}
 
-.b-stack-filter-option {
-  float: left;
-  margin: 0 3px 6px;
+  & dd {
+    float: left;
+    margin: 0 3px 6px;
+  }
 }
 </style>

@@ -1,45 +1,45 @@
 // Noto Sans CJK KR
 //
 // https://www.google.com/get/noto/#/family/noto-sans-kore
-@include font-face(
-  $font-family-NotoSansCJKKr,
-  $font-family-NotoSansCJKKr-DemiLight-src,
-  $font-weight-demilight,
-  normal,
-  otf
-);
+// @include font-face(
+//   $font-family-NotoSansCJKKr,
+//   $font-family-NotoSansCJKKr-DemiLight-src,
+//   $font-weight-demilight,
+//   normal,
+//   otf
+// );
 
-@include font-face(
-  $font-family-NotoSansCJKKr,
-  $font-family-NotoSansCJKKr-Regular-src,
-  $font-weight-normal,
-  normal,
-  otf
-);
+// @include font-face(
+//   $font-family-NotoSansCJKKr,
+//   $font-family-NotoSansCJKKr-Regular-src,
+//   $font-weight-normal,
+//   normal,
+//   otf
+// );
 
-@include font-face(
-  $font-family-NotoSansCJKKr,
-  $font-family-NotoSansCJKKr-Medium-src,
-  $font-weight-medium,
-  normal,
-  otf
-);
+// @include font-face(
+//   $font-family-NotoSansCJKKr,
+//   $font-family-NotoSansCJKKr-Medium-src,
+//   $font-weight-medium,
+//   normal,
+//   otf
+// );
 
-@include font-face(
-  $font-family-NotoSansCJKKr,
-  $font-family-NotoSansCJKKr-Bold-src,
-  $font-weight-bold,
-  normal,
-  otf
-);
+// @include font-face(
+//   $font-family-NotoSansCJKKr,
+//   $font-family-NotoSansCJKKr-Bold-src,
+//   $font-weight-bold,
+//   normal,
+//   otf
+// );
 
-@include font-face(
-  $font-family-D2Coding,
-  $font-family-D2Coding-Bold-src,
-  $font-weight-bold,
-  normal,
-  ttf
-);
+// @include font-face(
+//   $font-family-D2Coding,
+//   $font-family-D2Coding-Bold-src,
+//   $font-weight-bold,
+//   normal,
+//   ttf
+// );
 
 *,
 *:after,
@@ -155,8 +155,9 @@ section {
 body {
   overflow: hidden;
   line-height: 1.2;
-  font-family: $font-family-NotoSansCJKKr;
-  font-weight: $font-weight-normal;
+  font-family: 'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', 'Apple Gothic', sans-serif;
+  // font-family: $font-family-NotoSansCJKKr;
+  // font-weight: $font-weight-normal;
   -webkit-font-smoothing: antialiased; 
   -webkit-text-size-adjust: 100%; //fix for iOS
   letter-spacing: -0.015em;
@@ -202,8 +203,9 @@ input,
 textarea,
 button,
 select {
-  font-family: $font-family-NotoSansCJKKr;
-  font-weight: $font-weight-normal;
+  font-family: 'Noto Sans KR', '맑은 고딕', 'Malgun Gothic', 'Apple Gothic', sans-serif;
+  // font-family: $font-family-NotoSansCJKKr;
+  // font-weight: $font-weight-normal;
   font-size: inherit;
   color: inherit;
   -webkit-appearance: none;

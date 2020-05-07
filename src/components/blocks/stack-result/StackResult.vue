@@ -1,5 +1,5 @@
 <template>
-  <div class="b-stack-filter-result">
+  <div class="b-stack-result">
 		<AppText
 			v-if="isSearchResult"
 			:label="textLabel"
@@ -59,7 +59,7 @@ export default {
 </script>
 
 <style>
-.b-stack-filter-result {
+.b-stack-result {
   padding: 26px 0;
 }
 </style>

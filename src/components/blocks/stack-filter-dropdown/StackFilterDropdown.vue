@@ -1,6 +1,8 @@
 <template>
-  <div class="b-stack-filter-dropdown">
-    <ul>
+  <div class="b-stack-filter">
+    <ul 
+      class="b-stack-filter-dropdown" 
+    >
       <li
         v-for="tab in tabs"
         :key="tab.title"
@@ -10,9 +12,14 @@
           :label="tab.title"
         />
       </li>  
+      <AppIcon
+        class="b-stack-filter-btn"
+        :icon-class="iconClass"
+        @click.native="toggleDropDown"
+      />
     </ul>
-    <AppIcon
-      :icon-class="iconClass"
+    <StackFilterList
+      v-if="isToggle"
     />
   </div>
 </template>
@@ -20,11 +27,13 @@
 <script>
 import AppSetButton from '@/components/elements/AppSetButton.vue';
 import AppIcon from '@/components/elements/AppIcon.vue';
+import StackFilterList from '@/components/blocks/stack-filter-list/StackFilterList.vue';
 
 export default {
   components: {
     AppSetButton,
     AppIcon,
+    StackFilterList,
   },
 
   data() {
@@ -33,17 +42,30 @@ export default {
         { title: '필터', type: 'filter' },
         { title: '재설정', type: 'reset' }
       ],
-      iconClass: 'e-icon--arrow',
+      iconClass: 'gg-chevron-down',
       isToggle: false,
     };
   },
 
   computed: {
-    
+    toggleCondition() {
+      return this.isToggle ? 'b-stack-filter-btns--toggle' : 'b-stack-filter-btns';
+    },
   },
 
   methods: {
-    
+    toggleDropDown() {
+      this.isToggle = !this.isToggle;
+      if (this.isToggle) {
+        this.iconClass = 'gg-chevron-up';
+      } else {
+        this.iconClass = 'gg-chevron-down';
+      }
+    },
+
+    // resultsFilter(entry) {
+
+    // }
   },
 };
 </script>
@@ -55,21 +77,13 @@ export default {
   margin: 20px 0 0;
   padding-bottom: 12px;
   border-bottom: 2px solid #1A1F27;
-}
 
-.b-stack-filter-dropdown ul {
-  display: flex; 
-  align-items: center;
-}
+  & > li {
+    margin-right: 6px;
+  }
 
-.b-stack-filter-dropdown ul li {
-  margin-right: 6px;
-}
-
-.e-icon--arrow {
-  margin-left: auto;
-  width: 18px;
-  height: 18px;
-  background: no-repeat 0 / 18px url('~@/assets/images/icon_down_arrow_512x512.png');
+  & > i {
+    margin-left: auto;
+  }
 }
 </style>

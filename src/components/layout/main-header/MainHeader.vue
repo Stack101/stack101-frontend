@@ -22,7 +22,8 @@
       />
       <AppIcon
         class="l-header-icon"
-        :icon-class="menuIcon"
+        :icon-class="bookmarkIcon"
+				@click.native="openBookmark"
       />
     </div>
   </Header>
@@ -38,7 +39,7 @@ export default {
 
   data() {
     return {
-      menuIcon: 'gg-bookmark',
+			bookmarkIcon: 'gg-bookmark',
       searchIcon:'gg-search',
       backIcon: 'gg-chevron-left',
     };
@@ -46,7 +47,10 @@ export default {
 
   computed: {
     isDetailView() {
-      const condition = this.checkPath('stack') || this.checkPath('company');
+			const isStack = this.checkPath('stack');
+			const isCompany = this.checkPath('company');
+			const isBookmark = this.checkPath('bookmark');
+      const condition =  isStack || isCompany || isBookmark;
       return condition ? true : false;
     },
 		currentPath() {
@@ -77,6 +81,9 @@ export default {
     },
 		checkPath(str) {
 			return this.$route.path.includes(str);
+		},
+		openBookmark() {
+			this.$router.push('/bookmark');
 		},
   },
 };

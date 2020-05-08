@@ -50,16 +50,15 @@ export default {
     color: #FF7F2D;
   }
 
-  &.active,
-  &:focus {
-    border-color: #FF7F2D;
-    background-color: #FF7F2D;
-    color: #FFF;
+	&--active {
+		border-color: #FF7F2D;
+		background-color: #FF7F2D;
+		color: #FFF;
 
-    & > *:first-child {
-      display: none;
-    }
-  }
+		& > *:first-child {
+			display: none;
+		}
+	}
 }
 
 .e-button--frontend {
@@ -71,16 +70,15 @@ export default {
     color: #0ACF83;
   }
 
-  &.active,
-  &:focus {
-    border-color: #0ACF83;
-    background-color: #0ACF83;
-    color: #FFF;
+	&--active {
+		border-color: #0ACF83;
+		background-color: #0ACF83;
+		color: #FFF;
 
-    & > *:first-child {
-      display: none;
-    }
-  }
+		& > *:first-child {
+			display: none;
+		}
+	}
 }
 
 .e-button--backend {
@@ -91,20 +89,19 @@ export default {
     font-size: 6.5px;
     color: #4B86FF;
   }
-  
-  &.active,
-  &:focus {
-    border-color: #4B86FF;
-    background-color: #4B86FF;
-    color: #FFF;
 
-    & > *:first-child {
-      display: none;
-    }
-  }
+	&--active {
+		border-color: #4B86FF;
+		background-color: #4B86FF;
+		color: #FFF;
+
+		& > *:first-child {
+			display: none;
+		}
+	}
 }
 
-.e-button--uxui {
+.e-button--uiux {
   @extend .e-button;
 
   & > *:first-child {
@@ -113,16 +110,15 @@ export default {
     color: #D971FF;
   }
 
-  &.active,
-  &:focus {
-    border-color: #D971FF;
-    background-color: #D971FF;
-    color: #FFF;
+	&--active {
+		border-color: #D971FF;
+		background-color: #D971FF;
+		color: #FFF;
 
-    & > *:first-child {
-      display: none;
-    }
-  }
+		& > *:first-child {
+			display: none;
+		}
+	}
 }
 
 .e-button--developer,

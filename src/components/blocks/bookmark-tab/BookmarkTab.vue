@@ -40,7 +40,6 @@ export default {
 		setActiveTab(currentTab) {
 			this.activeTab = currentTab;
 		},
-
 		isActive(currentTab) {
 			return this.activeTab === currentTab;
 		},

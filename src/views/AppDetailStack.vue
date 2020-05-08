@@ -6,6 +6,7 @@
 		/>
 		<div class="v-company-list">
 			<CompanyList
+        v-if="isStackLoaded"
 				:list="stack.companies"
 				:is-detail="isDetail"
 			/>
@@ -16,7 +17,7 @@
 <script>
 import DetailInfo from '@/components/layout/detail-info/DetailInfo.vue';
 import CompanyList from '@/components/layout/company-list/CompanyList.vue';
-import mockStack from '@/mockStack.js';
+import stackApi from '@/api/stack.api.js';
 
 export default {
   components: {
@@ -26,26 +27,31 @@ export default {
 
 	data() {
 		return {
-			isDetail: true,
+      isDetail: true,
+      isStackLoaded: false,
+      stack: '',
 		};
-	},
-
-	computed: {
-		stack() {
-			const id = this.getRouteId();
-			const result = mockStack.filter(el => {
-				return el._id.$oid === id;
-			});
-			return result[0];
-		},
-	},
-
-	methods: {
-		getRouteId() {
+  },
+  
+  computed: {
+    routeId() {
 			const pathArr = this.$route.path.split('/');
 			const id = pathArr[pathArr.length - 1];
 			return id;
-		},
+    },
+  },
+
+  created() {
+    this.fetchTargetStack();
+  },
+
+	methods: {
+    async fetchTargetStack() {
+      this.isStackLoaded = false;
+      const { item } = await stackApi.getTargetStack(this.routeId);
+      this.stack = item[0];
+      this.isStackLoaded = true;
+    },
 	},
 };
 </script>

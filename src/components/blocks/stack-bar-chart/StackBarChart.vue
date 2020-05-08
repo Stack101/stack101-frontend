@@ -10,7 +10,7 @@ export default {
       default: undefined,
     },
 		chartColors: {
-    	type: Array,
+      type: Array,
 			default: undefined,
 		},
   },

@@ -1,8 +1,14 @@
 import baseURL from './index.js';
 
 export default {
-  getStacks() {
-    return baseURL.get('/stack')
+  getStacks(jobType, jobDetail, category) {
+    return baseURL.get('/stack',  {
+			params: {
+        'job_type': jobType,
+        'job_detail': jobDetail,
+        category,
+			},
+		})
       .then(response => {
         const { data } = response;
         return {

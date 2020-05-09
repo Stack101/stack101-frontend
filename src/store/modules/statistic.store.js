@@ -18,7 +18,7 @@ const actions = {
     if (!result.isError) {
       commit('SET_STATISTICS', result.item);
     } else {
-      console.log(result.item.statusCode);
+      // console.log(result.item.statusCode);
       // TODO
     }
   },

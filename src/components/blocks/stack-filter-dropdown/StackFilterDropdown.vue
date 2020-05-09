@@ -19,7 +19,8 @@
       />
     </ul>
     <StackFilterList
-      v-if="isToggle"
+      v-show="isToggle"
+      @selected-tab="emitEvent"
     />
   </div>
 </template>
@@ -62,10 +63,9 @@ export default {
         this.iconClass = 'gg-chevron-down';
       }
     },
-
-    // resultsFilter(entry) {
-
-    // }
+    emitEvent(activeTabs) {
+      this.$emit('selected-tab', activeTabs);
+    },
   },
 };
 </script>

@@ -1,8 +1,8 @@
 <template>
   <button
     :class="`e-button--${btnClass}`"
-    @click="$emit('button-click')"
     type="button"
+    @click="$emit('button-click')"
   >
     <span>●</span>
     <span>{{ label }}</span>
@@ -136,11 +136,10 @@ export default {
     display: none;
   }
 
-  &.active,
-  &:focus {
+  &--active {
     background-color: #DDD;
     color: #3B3B3B;
-  }
+	}
 }
 
 .e-button--cancel {

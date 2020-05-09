@@ -9,8 +9,8 @@
       >
         <AppButton
           ref="btn"
-          :btn-class="setBtnClassName(tab.type)"
-          :class="setClassName(tab.type)"
+          :btn-class="getBtnClassName(tab.type)"
+          :class="getActiveClassName(tab.type)"
           :label="tab.title"
           @button-click="setType(tab.type, index)"
         />
@@ -71,17 +71,17 @@ export default {
 			this.$refs.btn[index].$el.focus();
 			this.$emit('chart-type', currentTab);
 		},
-		setBtnClassName(typeStr) {
+		getBtnClassName(typeStr) {
 			if (typeStr.includes('/')) {
 				return typeStr.split('/').join('').toLowerCase();
 			} else {
 				return typeStr.toLowerCase();
 			}
 		},
-		setClassName(currentTab) {
+		getActiveClassName(currentTab) {
 			let style = null;
 			if (this.activeTab === currentTab) {
-				style = `e-button--${this.setBtnClassName(currentTab)}--active`;
+				style = `e-button--${this.getBtnClassName(currentTab)}--active`;
 			}
 			return style;
 		},

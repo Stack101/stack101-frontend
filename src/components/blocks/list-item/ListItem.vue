@@ -5,7 +5,7 @@
 				v-for="(item, index) in itemList"
 				:key="index"
 			>
-        <router-link :to="itemPath(item._id.$oid)">
+        <router-link :to="itemPath(item._id)">
           <AppThumbnail
             :thumbnail-class="thumbnailClass"
           />
@@ -73,7 +73,7 @@ export default {
 			let totalNum;
 			switch (true) {
 				case this.isMain:
-					totalNum = item.companies.length;
+					totalNum = item.cnt;
 					result = `${totalNum}개의 기업이 사용 중입니다.`;
 					break;
 				case this.isDetail:

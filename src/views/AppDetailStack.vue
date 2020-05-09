@@ -1,6 +1,8 @@
 <template>
   <main class="v-detail-stack">
     <DetailInfo
+			v-if="isStackLoaded"
+			:item="stack"
 			:title="stack.name"
 			:description="stack.description"
 		/>
@@ -32,7 +34,7 @@ export default {
       stack: '',
 		};
   },
-  
+
   computed: {
     routeId() {
 			const pathArr = this.$route.path.split('/');

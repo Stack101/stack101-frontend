@@ -39,8 +39,7 @@ export default {
 
 <style lang="scss" scoped>
 .l-search-header {
-  display: grid;
-  grid-template-columns: 1fr 50px;
+  display: flex;
 }
 .l-search-btn--cancel {
   justify-self: end;

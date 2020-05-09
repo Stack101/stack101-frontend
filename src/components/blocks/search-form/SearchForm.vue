@@ -6,7 +6,7 @@
     <div class="b-search-bar">
       <AppIcon
         class="b-search-icon"
-        :icon-class="searchIcon"
+        :img-src="searchIcon"
       />
       <input
         v-model="searchMsg"
@@ -17,7 +17,7 @@
       <AppIcon
         v-show="isTyping"
         class="b-search-icon"
-        :icon-class="closeIcon"
+        :img-src="closeIcon"
         @click.native="initMsg"
       />
     </div>
@@ -36,10 +36,10 @@ export default {
 
   data() {
     return {
-      searchIcon:'gg-search',
+      searchIcon:'ic_search.svg',
       type: 'string',
       placeholder: '스택/기업을 입력해주세요.',
-      closeIcon: 'gg-close-o',
+      closeIcon: 'ic_search_delete.svg',
       searchMsg: '',
     };
   },
@@ -75,7 +75,10 @@ export default {
 
 <style lang="scss" scoped>
 .b-search-form {
+	width: 326px;
+
   &__input {
+		width: 262px;
     border: none;
     background-color: #F3F3F3;
     margin: 0;
@@ -83,14 +86,14 @@ export default {
   }
 }
 .b-search-bar {
-  display: grid;
+  display: flex;
   align-items: center;
-  grid-template-columns: 32px 1fr 32px;
   background-color: #F3F3F3;
   height: 100%;
   border-radius: 4px;
 }
 .b-search-icon {
-  margin: 0 auto;
+	width: 32px;
+	height: 32px;
 }
 </style>

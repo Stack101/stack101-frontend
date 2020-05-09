@@ -62,4 +62,13 @@ export default {
     background-size: cover;
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .e-thumbnail { 
+    &--medium {
+      width: 76px;
+      height: 76px;
+    }
+  }    
+}
 </style>

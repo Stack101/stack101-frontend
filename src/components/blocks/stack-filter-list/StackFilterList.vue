@@ -190,7 +190,7 @@ export default {
 <style lang="scss" scoped>
 .b-stack-filter-list {
   padding: 11px 0;
-  border-bottom: 0.5px solid #1A1F27;;
+  border-bottom: 0.5px solid #1A1F27;
 }
 
 .b-stack-filter-item  {
@@ -212,6 +212,26 @@ export default {
   & dd {
     float: left;
     margin: 0 3px 6px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .b-stack-filter-list {
+    padding: 27px 0;
+  }
+
+  .b-stack-filter-item  {
+    padding: 13px 0;
+
+    & dt {
+      margin-top: 10px;
+      width: 115px;
+      font-size: 16px;
+    }
+
+    & dd {
+      margin: 0 7px 0;
+    }
   }
 }
 </style>

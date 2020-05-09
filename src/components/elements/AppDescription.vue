@@ -35,4 +35,10 @@ export default {
 	color: #8C8A94;
 	text-align: center;
 }
+
+@media screen and (min-width: 1200px) {
+  .e-description {
+    font-size: 15px; 
+  }
+}
 </style>

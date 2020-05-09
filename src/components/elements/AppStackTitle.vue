@@ -26,4 +26,10 @@ export default {
   color: #3B3B3B;
   font-weight: 600;
 }
+
+@media screen and (min-width: 1200px) {
+  .e-stack-title { 
+    font-size: 21px;
+  }    
+}
 </style>

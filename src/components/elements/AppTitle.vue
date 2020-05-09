@@ -31,4 +31,10 @@ export default {
     font-size: 22px;
   }
 }
+
+@media screen and (min-width: 1200px) { 
+  .e-title { 
+    font-size: 40px;
+  } 
+} 
 </style>

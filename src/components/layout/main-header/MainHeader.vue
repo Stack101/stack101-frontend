@@ -112,4 +112,9 @@ export default {
   justify-self: center;
   align-self: center;
 }
+@media screen and (min-width: 1200px) {
+  .l-app-header {
+    display: none;
+  }
+}
 </style>

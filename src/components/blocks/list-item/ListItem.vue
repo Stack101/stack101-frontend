@@ -59,10 +59,6 @@ export default {
 			type: Array,
 			default: undefined,
 		},
-		routeType: {
-			type: String,
-			default: '',
-		},
   },
 
   data() {

@@ -1,20 +1,20 @@
 <template>
   <div class="b-stack-filter">
-    <ul 
-      class="b-stack-filter-dropdown" 
+    <ul
+      class="b-stack-filter-dropdown"
     >
       <li
         v-for="tab in tabs"
         :key="tab.title"
       >
-        <AppSetButton 
+        <AppSetButton
           :btn-class="tab.type"
           :label="tab.title"
         />
-      </li>  
+      </li>
       <AppIcon
         class="b-stack-filter-btn"
-        :icon-class="iconClass"
+        :img-src="dropDownIcon"
         @click.native="toggleDropDown"
       />
     </ul>
@@ -43,7 +43,7 @@ export default {
         { title: '필터', type: 'filter' },
         { title: '재설정', type: 'reset' }
       ],
-      iconClass: 'gg-chevron-down',
+			dropDownIcon: 'ic_arrow_up.svg',
       isToggle: false,
     };
   },
@@ -58,9 +58,9 @@ export default {
     toggleDropDown() {
       this.isToggle = !this.isToggle;
       if (this.isToggle) {
-        this.iconClass = 'gg-chevron-up';
-      } else {
-        this.iconClass = 'gg-chevron-down';
+				this.dropDownIcon = 'ic_arrow_down.svg';
+			} else {
+				this.dropDownIcon = 'ic_arrow_up.svg';
       }
     },
     emitEvent(activeTabs) {
@@ -81,9 +81,9 @@ export default {
   & > li {
     margin-right: 6px;
   }
+}
 
-  & > i {
-    margin-left: auto;
-  }
+.b-stack-filter-btn {
+	margin-left: auto;
 }
 </style>

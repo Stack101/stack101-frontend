@@ -77,7 +77,7 @@ export default {
 					result = `${totalNum}개의 기업이 사용 중입니다.`;
 					break;
 				case this.isDetail:
-					result = `${item.name}외 ${item.cnt}개 사용 중입니다.`;
+					result = `${item.name} 외 ${item.cnt}개 사용 중입니다.`;
 					break;
 				default:
 					result = '임시 텍스트';

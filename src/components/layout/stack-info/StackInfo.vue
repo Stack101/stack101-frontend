@@ -3,7 +3,7 @@
     <AppTitle :label="title" />
     <StackFilterDropdown @selected-tab="fetchStackResult" />
     <StackResult
-      v-if="isStacksLoading"
+      v-if="isStacksLoaded"
 			:stack-list="stackList"
 			:is-main="isMain"
 		/>
@@ -27,16 +27,15 @@ export default {
     return {
       title: '기술스택 정보',
       isMain: true,
-      isStacksLoading: false,
+      isStacksLoaded: false,
       stackList: '',
     };
   },
 
   methods: {
     async fetchStackResult(activeTabs) {
-      console.log(activeTabs);
       const tabs = {};
-      this.isStacksLoading = false;
+      this.isStacksLoaded = false;
       for (const prop in activeTabs) {
         tabs[prop] = this.setFirstLetterToUpper(activeTabs[prop]);
       }
@@ -47,7 +46,7 @@ export default {
         const { item } = await stackApi.getStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.toolGroup);
         this.stackList = item;
       }
-      this.isStacksLoading = true;
+      this.isStacksLoaded = true;
     },
     setFirstLetterToUpper(str) {
       return str.charAt(0).toUpperCase() + str.slice(1);

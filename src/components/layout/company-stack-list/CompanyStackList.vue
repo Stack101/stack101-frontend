@@ -1,35 +1,65 @@
 <template>
   <section class="l-company-stack-list">
-    <StackToggleBar
-			v-for="(value, index) in division"
-			:key="`division-${index}`"
-			:title="value.name"
-			:cnt="value.totalCnt"
+		<CompanyStackForm
+			v-for="(value, index) in stackList"
+			:key="`stack-${index}`"
+			:title="value.divisionType"
+			:cnt="value.item.length"
+			:cards="value.item"
 		/>
   </section>
 </template>
 
 <script>
-import StackToggleBar from '@/components/blocks/stack-toggle-bar/StackToggleBar.vue';
+import CompanyStackForm from '../../blocks/company-stack-form/CompanyStackForm';
 
 export default {
   components: {
-    StackToggleBar,
+		CompanyStackForm,
   },
+
+	props: {
+		stacks: {
+			type: Array,
+			default: null,
+		},
+	},
 
 	data() {
 		return {
-			division: [
-				{
-					name: 'Application',
-					totalCnt: 6,
-				},
-				{
-					name: 'Design',
-					totalCnt: 9,
-				}
-			],
+			divisions: ['Application', 'Design'],
+			cardOpenInfo: { status: true, type: '' },
 		};
+	},
+
+	computed: {
+		developerStacks() {
+			const result = this.stacks.filter(el => {
+				return el.job_type === 'Developer';
+			});
+			return result;
+		},
+		designerStacks() {
+			const result = this.stacks.filter(el => {
+				return el.job_type === 'Designer';
+			});
+			return result;
+		},
+		filteredStacks() {
+			const result = [];
+			result.push(this.developerStacks, this.designerStacks);
+			return result;
+		},
+		stackList() {
+			const result = this.divisions.reduce((acc, curr, i) => {
+				const obj = {};
+				obj.divisionType = curr;
+				obj.item = this.filteredStacks[i];
+				acc.push(obj);
+				return acc;
+			}, []);
+			return result;
+		},
 	},
 };
 </script>

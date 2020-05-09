@@ -18,6 +18,7 @@ module.exports = {
       imports: 'never',
       exports: 'never',
     }],
+	  'no-mixed-spaces-and-tabs': [2, 'smart-tabs'],
 		'semi': ['error', 'always'],
   },
   overrides: [

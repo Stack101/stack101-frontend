@@ -4,16 +4,22 @@
 			:label="title"
 			:strong-class="strongClass"
 		/>
-    <span>⭐️</span>
+    <AppIcon
+			:img-src="imgSrc"
+			:icon-class="iconClass"
+			@click.native="$emit('click-favorite')"
+		/>
   </div>
 </template>
 
 <script>
 import AppStrong from '@/components/elements/AppStrong.vue';
+import AppIcon from '@/components/elements/AppIcon.vue';
 
 export default {
   components: {
 		AppStrong,
+		AppIcon,
   },
 
 	props: {
@@ -25,6 +31,16 @@ export default {
 			type: String,
 			default: 'default',
 		},
+		imgSrc: {
+			type: String,
+			default: 'ic_list_favorite_off_mobile.svg',
+		},
+	},
+
+	data() {
+		return {
+			iconClass: 'bookmark',
+		};
 	},
 };
 </script>
@@ -33,9 +49,5 @@ export default {
 .b-favorite-title {
   display: flex;
   align-items: center;
-
-  & > *:first-child {
-    margin-right: 7px;
-  }
 }
 </style>

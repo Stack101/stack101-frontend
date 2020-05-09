@@ -5,7 +5,7 @@
 				v-for="(item, index) in itemList"
 				:key="index"
 			>
-        <router-link :to="itemPath(item._id)">
+        <router-link :to="itemPath(item._id, item)">
           <AppThumbnail
             :thumbnail-class="thumbnailClass"
           />
@@ -85,13 +85,17 @@ export default {
 			}
 			return result;
     },
-		itemPath(id) {
-			const isStackPath = this.$route.path.includes('stack');
-			if (isStackPath) {
-				return `/company/${id}`;
+		itemPath(id, item) {
+			const path = this.$route.path.split('/')[1];
+			let result = '';
+			if (item.repStack) {
+				result = `/company/${id}`;
+			} else if (path === 'stack') {
+				result = `/company/${id}`;
 			} else {
-				return `/stack/${id}`;
+				result = `/stack/${id}`;
 			}
+			return result;
 		},
   },
 };

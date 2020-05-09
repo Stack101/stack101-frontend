@@ -54,6 +54,14 @@ export default {
     },
   },
 
+	// watch: {
+  // 	searchMsg: {
+  // 		handler(v) {
+  // 			this.$emit('search-msg', this.searchMsg)
+	// 		}
+	// 	}
+	// },
+
   methods: {
     initMsg() {
       this.searchMsg = '';

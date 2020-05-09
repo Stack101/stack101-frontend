@@ -1,11 +1,12 @@
 <template>
-	<section>
+	<section class="l-search-result">
 		<StackResult
 			v-if="isStackSearchList"
 			:stackList="stackSearchList"
 			:is-search-result="isSearchResult"
 		/>
 		<CompanyList
+			class="l-search-result--company"
 			v-if="isCompanySearchList"
 			:list="companySearchList"
 			:is-search-result="isSearchResult"
@@ -52,5 +53,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.l-search-result {
+	&--company {
+		padding-top: 0;
+	}
+}
 </style>

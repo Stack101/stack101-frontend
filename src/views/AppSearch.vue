@@ -15,14 +15,14 @@
 			</section>
 			<section v-else>
 				<SearchNoResult
-					v-if="!api"
+					v-if="!isSearchLoaded"
 					:description-label="noResultLabel"
 				/>
 				<SearchResult
 					v-else
 					:search-keyword="msg"
-					:stack-search-list="stackResult"
-					:company-search-list="companyResult"
+					:stack-search-list="searchResult.stackResult"
+					:company-search-list="searchResult.companyResult"
 				/>
 			</section>
     </div>
@@ -31,11 +31,11 @@
 
 <script>
 import SearchHeader from '@/components/layout/search-header/SearchHeader.vue';
-import SearchNoResult from "@/components/layout/search-no-result/SearchNoResult";
-import RecentSearch from "@/components/layout/recent-search/RecentSearch";
-import SearchResult from "@/components/layout/search-result/SearchResult";
-import mockStack from '@/mockStack.js';
-import mockCompany from '@/mockCompany.js';
+import SearchNoResult from '@/components/layout/search-no-result/SearchNoResult';
+import RecentSearch from '@/components/layout/recent-search/RecentSearch';
+import SearchResult from '@/components/layout/search-result/SearchResult';
+import searchApi from '@/api/search.api.js';
+// import debounce from 'lodash.debounce';
 
 export default {
   components: {
@@ -49,24 +49,14 @@ export default {
 		return {
 			msg: '',
 			noResultLabel: '검색 결과가 없습니다.',
-			searchList: [],
-			stackResult: [],
-			companyResult: [],
+			searchResult: '',
+			isSearchLoaded: false,
 		};
 	},
 
 	computed: {
 		isRecentSearch() {
 			if (this.searchList.length) {
-				return true;
-			} else {
-				return false;
-			}
-		},
-		api() {
-			const stackLength = this.stackResult.length;
-			const companyLength = this.companyResult.length;
-			if (stackLength > 0 || companyLength > 0) {
 				return true;
 			} else {
 				return false;
@@ -88,8 +78,18 @@ export default {
     },
 		getMsg(msg) {
 			this.msg = msg;
-			this.setSearchResult();
+			this.setSearchResult(msg);
 			this.saveSearch(msg);
+		},
+		async setSearchResult(msg) {
+			this.isSearchLoaded = false;
+			const { item, isError } = await searchApi.search(msg);
+			if (isError) {
+				this.searchResult = '검색 결과가 없습니다.';
+			} else {
+				this.searchResult = item[0];
+				this.isSearchLoaded = true;
+			}
 		},
 		saveSearch(msg) {
 			const length = this.searchList.length;
@@ -111,16 +111,6 @@ export default {
 			const index = this.searchList
 				.findIndex(el => (el.key === itemKey));
 			this.searchList.splice(index, 1);
-		},
-		setSearchResult() {
-			this.stackResult = this.getSearchResult(mockStack);
-			this.companyResult = this.getSearchResult(mockCompany);
-		},
-		getSearchResult(target) {
-			const result = target.filter(el => {
-				return el.name.toLowerCase() === this.msg.toLowerCase();
-			});
-			return result;
 		},
   },
 };

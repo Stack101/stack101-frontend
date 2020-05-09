@@ -1,3 +1,4 @@
+<script src="../store/modules/bookmark.store.js"></script>
 <template>
 	<section class="l-bookmark">
 		<AppTitle

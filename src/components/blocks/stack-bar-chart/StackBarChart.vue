@@ -5,20 +5,24 @@ export default {
   extends: HorizontalBar,
 
   props: {
-    statistic: {
+    statistics: {
       type: Object,
       default: undefined,
     },
+		chartColors: {
+    	type: Array,
+			default: undefined,
+		},
   },
 
   mounted () {
     this.renderChart({
-      labels: [...(this.statistic.labels)],
+      labels: [...this.statistics.name],
       datasets: [
         {
-          label: 'companies',
-          backgroundColor: [...(this.statistic.backgroundColor)],
-          data: [...(this.statistic.data)],
+          label: ['stack'],
+          backgroundColor: [...this.chartColors],
+          data: [...this.statistics.percentage],
           barPercentage: 1.0,
           categoryPercentage: 0.4,
         }

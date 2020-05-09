@@ -9,10 +9,10 @@
       >
         <AppButton
           ref="btn"
-          :btn-class="tab.type"
-          :class="`b-stack-tab-btns--toggle-${index + 1}`"
+          :btn-class="setBtnClassName(tab.type)"
+          :class="setClassName(tab.type)"
           :label="tab.title"
-          @button-click="emitType(tab.type, index)"
+          @button-click="setType(tab.type, index)"
         />
       </li>
     </ul>
@@ -32,24 +32,28 @@ export default {
     AppButton,
     AppIcon,
   },
+
   data() {
     return {
       tabs: [
-        { title: 'App 개발', color: '#FF7F2D', type: 'app' },
-        { title: 'Frontend 개발', color: '#0ACF83', type: 'frontend' },
-        { title: 'Backend 개발', color: '#4B86FF', type: 'backend' },
-        { title: 'UX/UI 디자인', color: '#D971FF', type: 'uxui' }
+        { title: 'App 개발', color: '#FF7F2D', type: 'App' },
+        { title: 'Frontend 개발', color: '#0ACF83', type: 'Frontend' },
+        { title: 'Backend 개발', color: '#4B86FF', type: 'Backend' },
+        { title: 'UX/UI 디자인', color: '#D971FF', type: 'UI/UX' }
       ],
       iconClass: 'gg-chevron-down',
       isToggle: false,
       btnClass: 'app',
+			activeTab: 'App',
     };
   },
+
   computed: {
     toggleCondition() {
       return this.isToggle ? 'b-stack-tab-btns--toggle' : 'b-stack-tab-btns';
     },
   },
+
   methods: {
     toggleDropDown() {
       this.isToggle = !this.isToggle;
@@ -59,10 +63,28 @@ export default {
         this.iconClass = 'gg-chevron-down';
       }
     },
-    emitType(type, index) {
-      this.$refs.btn[index].$el.focus();
-      this.$emit('chart-type', type);
+    setType(currentTab, index) {
+			this.activeTab = currentTab;
+			this.emitType(currentTab, index);
     },
+		emitType(currentTab, index) {
+			this.$refs.btn[index].$el.focus();
+			this.$emit('chart-type', currentTab);
+		},
+		setBtnClassName(typeStr) {
+			if (typeStr.includes('/')) {
+				return typeStr.split('/').join('').toLowerCase();
+			} else {
+				return typeStr.toLowerCase();
+			}
+		},
+		setClassName(currentTab) {
+			let style = null;
+			if (this.activeTab === currentTab) {
+				style = `e-button--${this.setBtnClassName(currentTab)}--active`;
+			}
+			return style;
+		},
   },
 };
 </script>

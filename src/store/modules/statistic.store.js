@@ -6,13 +6,15 @@ const state = {
 
 const mutations = {
   SET_STATISTICS(state, v) {
-    state.statistics = v;
+    state.statistics = v.sort((a, b) => {
+			return a.percentage - b.percentage;
+		});
   },
 };
 
 const actions = {
-  async setStatistics({ commit }) {
-    const result = await statisticAPI.getStatistics();
+  async setStatistics({ commit }, jobDetail) {
+    const result = await statisticAPI.getStatistics(jobDetail);
     if (!result.isError) {
       commit('SET_STATISTICS', result.item);
     } else {
@@ -23,24 +25,29 @@ const actions = {
 };
 
 const getters = {
-  getSpecificStatistic: state => type => {
-    let result;
-    switch(type) {
-      case 'app':
-        result = state.statistics[0];
-        break;
-      case 'frontend':
-        result = state.statistics[1];
-        break;
-      case 'backend':
-        result = state.statistics[2];
-        break;
-      case 'uxui':
-        result = state.statistics[3];
-        break;
-    }
-    return result;
-  },
+	getSpecificStatistic: state => {
+		const name = state.statistics.reduce((acc, curr) => {
+			acc.push(curr.name);
+			return acc;
+		}, []);
+
+		const percentage = state.statistics.reduce((acc, curr) => {
+			acc.push(curr.percentage);
+			return acc;
+		}, []);
+
+		const totalCnt = state.statistics.reduce((acc, curr) => {
+			acc.push(curr.total_count);
+			return acc;
+		}, []);
+
+		const result = {
+			name,
+			percentage,
+			totalCnt,
+		};
+		return result;
+	},
 };
 
 export default {

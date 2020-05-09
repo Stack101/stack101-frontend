@@ -1,17 +1,20 @@
 <template>
-  <main class="v-detail-company">
+  <main
+		class="v-detail-company"
+		v-if="isCompanyLoaded"
+	>
     <DetailInfo
 			:title="companyInfo.name"
 			:description="companyInfo.description"
 		/>
-    <CompanyStackList />
+    <CompanyStackList :stacks="companyInfo.stacks" />
   </main>
 </template>
 
 <script>
 import DetailInfo from '@/components/layout/detail-info/DetailInfo.vue';
 import CompanyStackList from '@/components/layout/company-stack-list/CompanyStackList.vue';
-import mockCompany from '@/mockCompany.js';
+import stackApi from '@/api/company.api.js';
 
 export default {
   components: {
@@ -19,13 +22,31 @@ export default {
     CompanyStackList,
   },
 
+	data() {
+		return {
+			isCompanyLoaded: false,
+			companyInfo: '',
+		};
+	},
+
 	computed: {
-		companyInfo() {
-			const id = this.$route.path.split('/')[2];
-			const company = mockCompany.find(el => {
-				return el._id.$oid === id;
-			});
-			return company;
+		routeId() {
+			const pathArr = this.$route.path.split('/');
+			const id = pathArr[pathArr.length - 1];
+			return id;
+		},
+	},
+
+	created() {
+		this.fetchTargetCompany();
+	},
+
+	methods: {
+		async fetchTargetCompany() {
+			this.isCompanyLoaded = false;
+			const { item } = await stackApi.getTargetCompany(this.routeId);
+			this.companyInfo = item[0];
+			this.isCompanyLoaded = true;
 		},
 	},
 };

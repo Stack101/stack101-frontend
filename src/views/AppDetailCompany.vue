@@ -43,7 +43,7 @@ export default {
 
 	methods: {
 		async fetchTargetCompany() {
-			this.isCompanyLoaded = false;
+      this.isCompanyLoaded = false;
 			const { item } = await stackApi.getTargetCompany(this.routeId);
 			this.companyInfo = item[0];
 			this.isCompanyLoaded = true;

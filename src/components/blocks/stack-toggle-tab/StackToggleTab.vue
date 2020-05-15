@@ -9,7 +9,7 @@
       >
         <AppButton
           ref="btn"
-          :btn-class="getBtnClassName(tab.type)"
+          :btn-class="tab.type"
           :class="getActiveClassName(tab.type)"
           :label="tab.title"
           @button-click="setType(tab.type, index)"
@@ -36,15 +36,15 @@ export default {
   data() {
     return {
       tabs: [
-        { title: 'App 개발', color: '#FF7F2D', type: 'App' },
-        { title: 'Frontend 개발', color: '#0ACF83', type: 'Frontend' },
-        { title: 'Backend 개발', color: '#4B86FF', type: 'Backend' },
-        { title: 'UX/UI 디자인', color: '#D971FF', type: 'UI/UX' }
+        { title: 'App 개발', color: '#FF7F2D', type: 'app' },
+        { title: 'Frontend 개발', color: '#0ACF83', type: 'frontend' },
+        { title: 'Backend 개발', color: '#4B86FF', type: 'backend' },
+        { title: 'UX/UI 디자인', color: '#D971FF', type: 'uiux' }
       ],
       iconClass: 'gg-chevron-down',
       isToggle: false,
       btnClass: 'app',
-			activeTab: 'App',
+			activeTab: 'app',
     };
   },
 
@@ -71,17 +71,10 @@ export default {
 			this.$refs.btn[index].$el.focus();
 			this.$emit('chart-type', currentTab);
 		},
-		getBtnClassName(typeStr) {
-			if (typeStr.includes('/')) {
-				return typeStr.split('/').join('').toLowerCase();
-			} else {
-				return typeStr.toLowerCase();
-			}
-		},
 		getActiveClassName(currentTab) {
 			let style = null;
 			if (this.activeTab === currentTab) {
-				style = `e-button--${this.getBtnClassName(currentTab)}--active`;
+				style = `e-button--${currentTab}--active`;
 			}
 			return style;
 		},

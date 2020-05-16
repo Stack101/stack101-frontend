@@ -35,13 +35,13 @@ export default {
 	computed: {
 		developerStacks() {
 			const result = this.stacks.filter(el => {
-				return el.job_type === 'Developer';
+				return el.job_type === 'developer';
 			});
 			return result;
 		},
 		designerStacks() {
 			const result = this.stacks.filter(el => {
-				return el.job_type === 'Designer';
+				return el.job_type === 'designer';
 			});
 			return result;
 		},

@@ -1,7 +1,7 @@
 export default (function() {
 	const statisticColors = [
 		{
-			name: 'App',
+			name: 'app',
 			backgroundColor: [
 				'#FF7F2D',
 				'#FF9957',
@@ -13,7 +13,7 @@ export default (function() {
 			],
 		},
 		{
-			name: 'Frontend',
+			name: 'frontend',
 			backgroundColor: [
 				'#1F7F78',
 				'#38B089',
@@ -28,7 +28,7 @@ export default (function() {
 			],
 		},
 		{
-			name: 'Backend',
+			name: 'backend',
 			backgroundColor: [
 				"#546FFF",
 				"#4B86FF",
@@ -42,7 +42,7 @@ export default (function() {
 			],
 		},
 		{
-			name: 'UI/UX',
+			name: 'uiux',
 			backgroundColor: [
 				'#D971FF',
 				'#DF86FF',

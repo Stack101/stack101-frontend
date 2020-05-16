@@ -37,7 +37,7 @@ export default {
       const tabs = {};
       this.isStacksLoaded = false;
       for (const prop in activeTabs) {
-        tabs[prop] = this.setFirstLetterToUpper(activeTabs[prop]);
+        tabs[prop] = activeTabs[prop];
       }
       if (activeTabs.jobGroup === 'developer') {
         const { item } = await stackApi.getStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.stackGroup);
@@ -47,9 +47,6 @@ export default {
         this.stackList = item;
       }
       this.isStacksLoaded = true;
-    },
-    setFirstLetterToUpper(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
     },
   },
 };

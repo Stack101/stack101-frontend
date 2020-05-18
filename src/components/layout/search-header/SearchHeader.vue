@@ -40,6 +40,7 @@ export default {
 <style lang="scss" scoped>
 .l-search-header {
   display: flex;
+  width: 100%;
 }
 .l-search-btn--cancel {
   justify-self: end;

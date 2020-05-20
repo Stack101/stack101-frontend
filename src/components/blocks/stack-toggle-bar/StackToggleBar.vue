@@ -6,11 +6,6 @@
 				:label="title"
 				:strong-class="strongClass"
 			/>
-			<div>{{ cnt }}</div>
-			<AppIcon
-				:img-src="dropDownIcon"
-				@click.native="toggleDropDown"
-			/>
 		</div>
 </template>
 
@@ -29,38 +24,14 @@ export default {
 			type: String,
 			default: '',
 		},
-		cnt: {
-			type: Number,
-			default: 0,
-		},
 	},
 
 	data() {
 		return {
 			applicationIcon: 'ic_application_mobile.svg',
-			dropDownIcon: 'ic_arrow_down.svg',
-			isDropDown: true,
 			btnClass: 'app',
 			strongClass: 'division',
 		};
-	},
-
-	computed: {
-		toggleCondition() {
-			return this.isToggle ? 'b-stack-tab-btns--toggle' : 'b-stack-tab-btns';
-		},
-	},
-
-	methods: {
-		toggleDropDown() {
-			this.isDropDown = !this.isDropDown;
-			if (this.isDropDown) {
-				this.dropDownIcon = 'ic_arrow_down.svg';
-			} else {
-				this.dropDownIcon = 'ic_arrow_up.svg';
-			}
-			this.$emit('toggle-status', this.isDropDown);
-		},
 	},
 };
 </script>

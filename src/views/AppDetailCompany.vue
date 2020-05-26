@@ -6,6 +6,7 @@
     <DetailInfo
 			:title="companyInfo.name"
 			:description="companyInfo.description"
+      :logo="companyInfo.logo"
 		/>
     <CompanyStackList :stacks="companyInfo.stacks" />
   </main>

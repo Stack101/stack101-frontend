@@ -5,7 +5,7 @@
   >
     <span
       class="e-thumbnail-img"
-      :style="`background-image:${thumbnailImgSrc}`"
+      :style="{ backgroundImage: `url(${thumbnailImgSrc})` }"
     />
   </div>
 </template>
@@ -30,7 +30,6 @@ export default {
   overflow: hidden;
   width: auto;
   height: auto;
-  background-image: url('https://crestaproject.com/demo/lontano-pro/wp-content/themes/lontano-pro/images/no-image-slide.png');
   background-repeat: no-repeat;
   background-position: 50%;
   background-size: 100%;
@@ -57,6 +56,7 @@ export default {
     width: 100%;
     padding-top: 100%;
     height: auto;
+    background-image: url('https://crestaproject.com/demo/lontano-pro/wp-content/themes/lontano-pro/images/no-image-slide.png');
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;

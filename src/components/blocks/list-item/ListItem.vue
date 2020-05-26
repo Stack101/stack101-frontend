@@ -8,6 +8,7 @@
         <router-link :to="itemPath(item._id, item)">
           <AppThumbnail
             :thumbnail-class="thumbnailClass"
+            :thumbnail-img-src="item.logo"
           />
           <div class="container">
             <FavoriteTitle

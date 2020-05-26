@@ -5,6 +5,7 @@
 			:item="stack"
 			:title="stack.name"
 			:description="stack.description"
+      :logo="stack.logo"
 		/>
 		<div class="v-company-list">
 			<CompanyList

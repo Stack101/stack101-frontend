@@ -1,6 +1,9 @@
 <template>
 	<div class="e-stack-card">
-		<AppThumbnail :thumbnail-class="thumbnailSize" />
+		<AppThumbnail
+      :thumbnail-class="thumbnailSize"
+      :thumbnail-img-src="logo"
+    />
 		<AppStrong
 			:strong-class="strongClass"
 			:label="title"
@@ -22,7 +25,11 @@ export default {
 		title: {
 			type: String,
 			default: '',
-		},
+    },
+    logo: {
+      type: String,
+			default: null,
+    },
 	},
 
 	data() {

@@ -2,7 +2,7 @@
   <section class="v-detail-stack">
     <AppThumbnail
       :thumbnail-class="thumbnailSize"
-      :thumbnail-img-src="thumbnailSrc"
+      :thumbnail-img-src="logo"
     />
     <FavoriteTitle
 			class="v-detail-stack--title"
@@ -31,22 +31,25 @@ export default {
 	props: {
 		title: {
 			type: String,
-			default: undefined,
+			default: '',
 		},
 		description: {
 			type: String,
-			default: undefined,
+			default: '',
 		},
 		item: {
 			type: Object,
 			default: undefined,
-		},
+    },
+    logo: {
+      type: String,
+      default: null,
+    },
 	},
 
   data() {
     return {
       thumbnailSize: 'medium',
-      thumbnailSrc: 'https://hackernoon.com/drafts/yj1e929ns.png',
 			strongClass: 'title',
 			isFavorite: false,
     };

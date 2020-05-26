@@ -1,18 +1,18 @@
 <template>
   <section class="l-company-list">
-		<AppText
-			v-if="isSearchResult"
-			:label="textLabel"
-			:desc-class="textClass"
-		/>
+    <AppText
+      v-if="isSearchResult"
+      :label="textLabel"
+      :desc-class="textClass"
+    />
     <AppCountTitle
-			v-else
-			:label="totalNum"
-		/>
+      v-else
+      :label="totalNum"
+    />
     <ListItem
-			:is-detail="isDetail"
-			:item-list="list"
-		/>
+      :is-detail="isDetail"
+      :item-list="list"
+    />
   </section>
 </template>
 

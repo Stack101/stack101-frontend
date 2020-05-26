@@ -1,14 +1,14 @@
 <script src="../store/modules/bookmark.store.js"></script>
 <template>
-	<section class="l-bookmark">
-		<AppTitle
-			class="l-bookmark-title"
-			:label="titleLabel"
-		/>
-		<BookmarkTab />
-<!--		<StackResult />-->
-<!--		<CompanyList />-->
-	</section>
+  <section class="l-bookmark">
+    <AppTitle
+      class="l-bookmark-title"
+      :label="titleLabel"
+    />
+    <BookmarkTab />
+    <!--		<StackResult />-->
+    <!--		<CompanyList />-->
+  </section>
 </template>
 
 <script>

@@ -1,14 +1,14 @@
 <template>
-	<div class="e-stack-card">
-		<AppThumbnail
+  <div class="e-stack-card">
+    <AppThumbnail
       :thumbnail-class="thumbnailSize"
       :thumbnail-img-src="logo"
     />
-		<AppStrong
-			:strong-class="strongClass"
-			:label="title"
-		/>
-	</div>
+    <AppStrong
+      :strong-class="strongClass"
+      :label="title"
+    />
+  </div>
 </template>
 
 <script>

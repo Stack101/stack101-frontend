@@ -3,15 +3,15 @@
     <div class="l-header-start">
       <AppIcon
         v-show="isDetailView"
-				:icon-class="iconClass"
+        :icon-class="iconClass"
         :img-src="backIcon"
         @click.native="backPage"
       />
-			<AppIcon
-				v-show="isDetailView"
-				:img-src="homeIcon"
-				@click.native="homepage"
-			/>
+      <AppIcon
+        v-show="isDetailView"
+        :img-src="homeIcon"
+        @click.native="homepage"
+      />
     </div>
 
     <div class="l-header-center">
@@ -23,15 +23,15 @@
     <div class="l-header-end">
       <AppIcon
         class="l-header-icon"
-				:class="{ alone: isBookmark }"
+        :class="{ alone: isBookmark }"
         :img-src="searchIcon"
         @click.native="openSearch"
       />
       <AppIcon
-				v-show="!isBookmark"
+        v-show="!isBookmark"
         class="l-header-icon"
         :img-src="bookmarkIcon"
-				@click.native="openBookmark"
+        @click.native="openBookmark"
       />
     </div>
   </Header>

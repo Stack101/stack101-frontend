@@ -1,18 +1,18 @@
 <template>
-	<ul class="b-bookmark-tab">
-		<li
-			v-for="(name, index) in tabName"
-			:key="index"
-			:descClass="tabClass"
-		>
-			<AppText
-				:label="name"
-				@click.native="setActiveTab(name)"
-				:desc-class="descClass"
-				:class="{ active: isActive(name) }"
-			/>
-		</li>
-	</ul>
+  <ul class="b-bookmark-tab">
+    <li
+      v-for="(name, index) in tabName"
+      :key="index"
+      :descClass="tabClass"
+    >
+      <AppText
+        :label="name"
+        :desc-class="descClass"
+        :class="{ active: isActive(name) }"
+        @click.native="setActiveTab(name)"
+      />
+    </li>
+  </ul>
 </template>
 
 <script>

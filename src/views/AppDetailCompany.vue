@@ -1,13 +1,13 @@
 <template>
   <main
-		class="v-detail-company"
-		v-if="isCompanyLoaded"
-	>
+    v-if="isCompanyLoaded"
+    class="v-detail-company"
+  >
     <DetailInfo
-			:title="companyInfo.name"
-			:description="companyInfo.description"
+      :title="companyInfo.name"
+      :description="companyInfo.description"
       :logo="companyInfo.logo"
-		/>
+    />
     <CompanyStackList :stacks="companyInfo.stacks" />
   </main>
 </template>

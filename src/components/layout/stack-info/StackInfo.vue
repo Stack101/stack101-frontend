@@ -4,9 +4,9 @@
     <StackFilterDropdown @selected-tab="fetchStackResult" />
     <StackResult
       v-if="isStacksLoaded"
-			:stack-list="stackList"
-			:is-main="isMain"
-		/>
+      :stack-list="stackList"
+      :is-main="isMain"
+    />
   </section>
 </template>
 

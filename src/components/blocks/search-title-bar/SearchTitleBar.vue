@@ -1,11 +1,11 @@
 <template>
-	<li class="b-search-title-bar">
-		<AppText :label="searchTitle" />
-		<AppIcon
-			:img-src="deleteIcon"
-			@click.native="deleteSearch"
-		/>
-	</li>
+  <li class="b-search-title-bar">
+    <AppText :label="searchTitle" />
+    <AppIcon
+      :img-src="deleteIcon"
+      @click.native="deleteSearch"
+    />
+  </li>
 </template>
 
 <script>

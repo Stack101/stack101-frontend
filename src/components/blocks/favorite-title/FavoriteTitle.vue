@@ -1,14 +1,14 @@
 <template>
   <div class="b-favorite-title">
     <AppStrong
-			:label="title"
-			:strong-class="strongClass"
-		/>
+      :label="title"
+      :strong-class="strongClass"
+    />
     <AppIcon
-			:img-src="imgSrc"
-			:icon-class="iconClass"
-			@click.native="$emit('click-favorite')"
-		/>
+      :img-src="imgSrc"
+      :icon-class="iconClass"
+      @click.native="$emit('click-favorite')"
+    />
   </div>
 </template>
 

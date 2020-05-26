@@ -1,17 +1,17 @@
 <template>
-	<section class="l-search-result">
-		<StackResult
-			v-if="isStackSearchList"
-			:stackList="stackSearchList"
-			:is-search-result="isSearchResult"
-		/>
-		<CompanyList
-			class="l-search-result--company"
-			v-if="isCompanySearchList"
-			:list="companySearchList"
-			:is-search-result="isSearchResult"
-		/>
-	</section>
+  <section class="l-search-result">
+    <StackResult
+      v-if="isStackSearchList"
+      :stack-list="stackSearchList"
+      :is-search-result="isSearchResult"
+    />
+    <CompanyList
+      v-if="isCompanySearchList"
+      class="l-search-result--company"
+      :list="companySearchList"
+      :is-search-result="isSearchResult"
+    />
+  </section>
 </template>
 
 <script>

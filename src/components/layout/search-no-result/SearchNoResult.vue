@@ -1,9 +1,9 @@
 <template>
-	<AppDescription
-		class="l-search-no-result"
-		:label="descriptionLabel"
-		:desc-class="descriptionClass"
-	/>
+  <AppDescription
+    class="l-search-no-result"
+    :label="descriptionLabel"
+    :desc-class="descriptionClass"
+  />
 </template>
 
 <script>

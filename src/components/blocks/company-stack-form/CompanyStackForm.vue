@@ -1,22 +1,22 @@
 <template>
-	<ul>
-		<li>
-			<StackToggleBar
-				:title="title"
-			/>
-		</li>
-		<li
-			v-if="isCardsOpened"
-			class="b-stack-cards"
-		>
-			<StackCard
-				v-for="(card, index) in cards"
-				:key="`stack-${index}`"
-				:title="card.name"
+  <ul>
+    <li>
+      <StackToggleBar
+        :title="title"
+      />
+    </li>
+    <li
+      v-if="isCardsOpened"
+      class="b-stack-cards"
+    >
+      <StackCard
+        v-for="(card, index) in cards"
+        :key="`stack-${index}`"
+        :title="card.name"
         :logo="card.logo"
-			/>
-		</li>
-	</ul>
+      />
+    </li>
+  </ul>
 </template>
 
 <script>

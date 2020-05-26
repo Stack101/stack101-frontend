@@ -1,19 +1,19 @@
 <template>
   <main class="v-detail-stack">
     <DetailInfo
-			v-if="isStackLoaded"
-			:item="stack"
-			:title="stack.name"
-			:description="stack.description"
+      v-if="isStackLoaded"
+      :item="stack"
+      :title="stack.name"
+      :description="stack.description"
       :logo="stack.logo"
-		/>
-		<div class="v-company-list">
-			<CompanyList
+    />
+    <div class="v-company-list">
+      <CompanyList
         v-if="isStackLoaded"
-				:list="stack.companies"
-				:is-detail="isDetail"
-			/>
-		</div>
+        :list="stack.companies"
+        :is-detail="isDetail"
+      />
+    </div>
   </main>
 </template>
 

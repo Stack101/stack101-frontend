@@ -5,12 +5,12 @@
       :thumbnail-img-src="logo"
     />
     <FavoriteTitle
-			class="v-detail-stack--title"
-			:title="title"
-			:strong-class="strongClass"
-			:img-src="favoriteIcon"
-			@click-favorite="setClickFavorite"
-		/>
+      class="v-detail-stack--title"
+      :title="title"
+      :strong-class="strongClass"
+      :img-src="favoriteIcon"
+      @click-favorite="setClickFavorite"
+    />
     <AppDescription :label="description" />
   </section>
 </template>

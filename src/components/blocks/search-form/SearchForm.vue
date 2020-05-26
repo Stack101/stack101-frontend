@@ -1,8 +1,8 @@
 <template>
   <form
-		class="b-search-form"
-		@submit.prevent="ascSearchMsg"
-	>
+    class="b-search-form"
+    @submit.prevent="ascSearchMsg"
+  >
     <div class="b-search-bar">
       <AppIcon
         class="b-search-icon"
@@ -13,7 +13,7 @@
         class="b-search-form__input"
         :type="type"
         :placeholder="placeholder"
-      />
+      >
       <AppIcon
         v-show="isTyping"
         class="b-search-icon"

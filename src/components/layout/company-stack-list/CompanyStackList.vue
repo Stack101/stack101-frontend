@@ -1,12 +1,12 @@
 <template>
   <section class="l-company-stack-list">
-		<CompanyStackForm
-			v-for="(value, index) in stackList"
-			:key="`stack-${index}`"
-			:title="value.divisionType"
-			:cnt="value.item.length"
-			:cards="value.item"
-		/>
+    <CompanyStackForm
+      v-for="(value, index) in stackList"
+      :key="`stack-${index}`"
+      :title="value.divisionType"
+      :cnt="value.item.length"
+      :cards="value.item"
+    />
   </section>
 </template>
 

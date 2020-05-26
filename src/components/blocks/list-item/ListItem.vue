@@ -2,9 +2,9 @@
   <div class="b-list-item">
     <ul>
       <li
-				v-for="(item, index) in itemList"
-				:key="index"
-			>
+        v-for="(item, index) in itemList"
+        :key="index"
+      >
         <router-link :to="itemPath(item._id, item)">
           <AppThumbnail
             :thumbnail-class="thumbnailClass"

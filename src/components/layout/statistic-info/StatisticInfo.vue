@@ -3,11 +3,11 @@
     <AppTitle :label="title" />
     <StackToggleTab @chart-type="setJobDetail" />
     <StackBarChart
-			v-if="isStatisticsLoading"
-			:key="rerenderIndex"
-			:statistics="statistics"
-			:height="chartHeight"
-			:chart-colors="chartColors"
+      v-if="isStatisticsLoading"
+      :key="rerenderIndex"
+      :statistics="statistics"
+      :height="chartHeight"
+      :chart-colors="chartColors"
     />
   </section>
 </template>

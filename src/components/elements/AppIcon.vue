@@ -1,10 +1,10 @@
 <template>
-	<div class="e-icon">
-		<img
-			:src="getSrc(imgSrc)"
-			:class="`e-icon--${iconClass}`"
-		>
-	</div>
+  <div class="e-icon">
+    <img
+      :src="getSrc(imgSrc)"
+      :class="`e-icon--${iconClass}`"
+    >
+  </div>
 </template>
 
 <script>

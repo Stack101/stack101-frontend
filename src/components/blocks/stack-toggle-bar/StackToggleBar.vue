@@ -1,12 +1,12 @@
 <template>
-		<div class="b-stack-toggle-bar">
-			<AppIcon :img-src="applicationIcon"/>
-			<AppStrong
-				class="b-stack-toggle--title"
-				:label="title"
-				:strong-class="strongClass"
-			/>
-		</div>
+  <div class="b-stack-toggle-bar">
+    <AppIcon :img-src="applicationIcon" />
+    <AppStrong
+      class="b-stack-toggle--title"
+      :label="title"
+      :strong-class="strongClass"
+    />
+  </div>
 </template>
 
 <script>

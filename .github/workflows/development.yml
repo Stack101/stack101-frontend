@@ -33,15 +33,15 @@ jobs:
     
     # setup build
     - name: NPM Install
-    - run: |
+      run: |
         npm install
 
     - name: Production Build
-    - run: |
+      run: |
         npm run build
 
     - name: Inspect lint
-    - run: |
+      run: |
         npm run lint
 
     - name: Deploy to S3

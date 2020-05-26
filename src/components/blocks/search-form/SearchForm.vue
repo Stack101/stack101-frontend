@@ -26,12 +26,10 @@
 
 <script>
 import AppIcon from '@/components/elements/AppIcon.vue';
-// import AppInput from '@/components/elements/AppInput.vue';
 
 export default {
   components: {
     AppIcon,
-		// AppInput,
   },
 
   data() {
@@ -54,14 +52,6 @@ export default {
     },
   },
 
-	// watch: {
-  // 	searchMsg: {
-  // 		handler(v) {
-  // 			this.$emit('search-msg', this.searchMsg)
-	// 		}
-	// 	}
-	// },
-
   methods: {
     initMsg() {
       this.searchMsg = '';
@@ -75,10 +65,10 @@ export default {
 
 <style lang="scss" scoped>
 .b-search-form {
-	width: 326px;
+	width: 95%;
 
   &__input {
-		width: 262px;
+    width: 100%;
     border: none;
     background-color: #F3F3F3;
     margin: 0;
@@ -86,7 +76,8 @@ export default {
   }
 }
 .b-search-bar {
-  display: flex;
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
   align-items: center;
   background-color: #F3F3F3;
   height: 100%;

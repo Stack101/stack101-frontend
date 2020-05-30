@@ -40,10 +40,10 @@ export default {
         tabs[prop] = activeTabs[prop];
       }
       if (activeTabs.jobGroup === 'developer') {
-        const { item } = await stackApi.getStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.stackGroup);
+        const { item } = await stackApi.getSpecificStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.stackGroup);
         this.stackList = item;
       } else {
-        const { item } = await stackApi.getStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.toolGroup);
+        const { item } = await stackApi.getSpecificStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.toolGroup);
         this.stackList = item;
       }
       this.isStacksLoaded = true;

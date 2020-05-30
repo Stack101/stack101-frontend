@@ -78,7 +78,7 @@ export default {
 				this.isFavorite = false;
 			} else {
 				this.isFavorite = true;
-				this.saveOnStore();
+        this.saveOnStore();
 			}
 		},
 		saveOnStore() {

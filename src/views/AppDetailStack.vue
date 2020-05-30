@@ -1,16 +1,16 @@
 <template>
   <main class="v-detail-stack">
     <DetailInfo
-      v-if="isStackLoaded"
-      :item="stack"
-      :title="stack.name"
-      :description="stack.description"
-      :logo="stack.logo"
+      v-if="stackDetails"
+      :item="stackDetails"
+      :title="stackDetails.name"
+      :description="stackDetails.description"
+      :logo="stackDetails.logo"
     />
     <div class="v-company-list">
       <CompanyList
-        v-if="isStackLoaded"
-        :list="stack.companies"
+        v-if="stackDetails"
+        :list="stackDetails.companies"
         :is-detail="isDetail"
       />
     </div>
@@ -20,7 +20,7 @@
 <script>
 import DetailInfo from '@/components/layout/detail-info/DetailInfo.vue';
 import CompanyList from '@/components/layout/company-list/CompanyList.vue';
-import stackApi from '@/api/stack.api.js';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   components: {
@@ -31,8 +31,6 @@ export default {
 	data() {
 		return {
       isDetail: true,
-      isStackLoaded: false,
-      stack: '',
 		};
   },
 
@@ -42,20 +40,16 @@ export default {
 			const id = pathArr[pathArr.length - 1];
 			return id;
     },
+    ...mapState('stack', ['stackDetails']),
   },
 
   created() {
-    this.fetchTargetStack();
+    this.setTargetStack(this.routeId);
   },
 
 	methods: {
-    async fetchTargetStack() {
-      this.isStackLoaded = false;
-      const { item } = await stackApi.getTargetStack(this.routeId);
-      this.stack = item[0];
-      this.isStackLoaded = true;
-    },
-	},
+    ...mapActions({ 'setTargetStack': 'stack/setTargetStack' }),
+  },
 };
 </script>
 

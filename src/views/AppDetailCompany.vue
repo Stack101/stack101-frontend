@@ -1,21 +1,22 @@
 <template>
   <main
-    v-if="isCompanyLoaded"
+    v-if="companyDetails"
     class="v-detail-company"
   >
     <DetailInfo
-      :title="companyInfo.name"
-      :description="companyInfo.description"
-      :logo="companyInfo.logo"
+      :title="companyDetails.name"
+      :description="companyDetails.description"
+      :logo="companyDetails.logo"
+      :item="companyDetails"
     />
-    <CompanyStackList :stacks="companyInfo.stacks" />
+    <CompanyStackList :stacks="companyDetails.stacks" />
   </main>
 </template>
 
 <script>
 import DetailInfo from '@/components/layout/detail-info/DetailInfo.vue';
 import CompanyStackList from '@/components/layout/company-stack-list/CompanyStackList.vue';
-import stackApi from '@/api/company.api.js';
+import { mapActions, mapState } from 'vuex';
 
 export default {
   components: {
@@ -23,32 +24,21 @@ export default {
     CompanyStackList,
   },
 
-	data() {
-		return {
-			isCompanyLoaded: false,
-			companyInfo: '',
-		};
-	},
-
 	computed: {
 		routeId() {
 			const pathArr = this.$route.path.split('/');
 			const id = pathArr[pathArr.length - 1];
 			return id;
-		},
+    },
+    ...mapState('company', ['companyDetails']),
 	},
 
 	created() {
-		this.fetchTargetCompany();
+    this.setTargetCompany(this.routeId);
 	},
 
 	methods: {
-		async fetchTargetCompany() {
-      this.isCompanyLoaded = false;
-			const { item } = await stackApi.getTargetCompany(this.routeId);
-			this.companyInfo = item[0];
-			this.isCompanyLoaded = true;
-		},
+    ...mapActions({ 'setTargetCompany': 'company/setTargetCompany' }),
 	},
 };
 </script>

@@ -1,19 +1,28 @@
 import companyAPI from '@/api/company.api.js';
 
 const state = {
-  companies: '',
+  companyDetails: '',
+  bookmarkCompanies: [],
 };
 
 const mutations = {
-  SET_COMPANIES(state, v) {
-    state.companies = v;
+  SET_TARGET_COMPANY(state, v) {
+    state.companyDetails = v;
+  },
+  ADD_BOOKMARK_COMPANY(state, obj) {
+    state.bookmarkCompanies.push(obj);
   },
 };
 
 const actions = {
-  async getCompanies({ commit }) {
-    const result = companyAPI.getCompanies();
-    commit('SET_COMPANIES', result);
+  async setTargetCompany({ commit }, id) {
+    const result = await companyAPI.getTargetCompany(id);
+    if (result.isError) {
+      console.error(result.item.msg);
+    } else {
+      const companyDetails = result.item[0];
+      commit('SET_TARGET_COMPANY', companyDetails);
+    }
   },
 };
 

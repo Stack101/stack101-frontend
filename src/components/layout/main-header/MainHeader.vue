@@ -133,12 +133,13 @@ export default {
 
 @media screen and (min-width: 1200px) {
   .l-app-header {
-    display: none;
+    
   }
 
-.alone {
-	position: absolute;
-	top: 32px;
-	right: 32px;
+  .alone {
+    position: absolute;
+    top: 32px;
+    right: 32px;
+  }
 }
 </style>

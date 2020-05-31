@@ -102,4 +102,24 @@ export default {
     margin-bottom: 5px;
   }
 }
+@media screen and (min-width: 1200px) {
+	.v-detail-stack {
+		border-bottom: 3px solid #414143;
+
+		.e-thumbnail--medium {
+			margin-right: 22px;
+			float: left;
+		}
+		.v-detail-stack--title {
+			margin-top: 0;
+		}
+
+		&::after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	}
+
+}
 </style>

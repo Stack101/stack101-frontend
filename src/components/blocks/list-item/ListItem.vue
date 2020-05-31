@@ -136,6 +136,10 @@ export default {
     ul li {
       padding: 40px 0 30px;
     }
+
+    .container {
+      padding-left: 19px;
+    }
   }
 }
 </style>

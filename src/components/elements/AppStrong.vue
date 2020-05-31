@@ -48,4 +48,20 @@
 			font-size: 14px;
 		}
 	}
+
+	@media screen and (min-width: 1200px) {
+		.e-strong {
+			&--title {
+				font-size: 38px;
+			}
+
+			&--division {
+				font-size: 21px;
+			}
+
+			&--card {
+				font-size: 16px;
+			}
+		}
+	}
 </style>

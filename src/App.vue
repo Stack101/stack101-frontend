@@ -31,7 +31,7 @@ export default {
     };
   },
 
-  methods: {
+	methods: {
     changeSearchStatus() {
       this.onSearch = !this.onSearch;
     },

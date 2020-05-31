@@ -2,29 +2,29 @@
   <div class="v-search">
     <div class="v-search-wrapper">
       <SearchHeader
-				@close-search="closeSearch"
-				@search-msg="getMsg"
-			/>
-			<section v-if="!msg">
-				<SearchNoResult v-if="!isRecentSearch" />
-				<RecentSearch
-					v-else
-					:search-list="searchList"
-					@delete-search="deleteSearch"
-				/>
-			</section>
-			<section v-else>
-				<SearchNoResult
-					v-if="!isSearchLoaded"
-					:description-label="noResultLabel"
-				/>
-				<SearchResult
-					v-else
-					:search-keyword="msg"
-					:stack-search-list="searchResult.stackResult"
-					:company-search-list="searchResult.companyResult"
-				/>
-			</section>
+        @close-search="closeSearch"
+        @search-msg="getMsg"
+      />
+      <section v-if="!msg">
+        <SearchNoResult v-if="!isRecentSearch" />
+        <RecentSearch
+          v-else
+          :search-list="searchList"
+          @delete-search="deleteSearch"
+        />
+      </section>
+      <section v-else>
+        <SearchNoResult
+          v-if="!isSearchLoaded"
+          :description-label="noResultLabel"
+        />
+        <SearchResult
+          v-else
+          :search-keyword="msg"
+          :stack-search-list="searchResult.stackResult"
+          :company-search-list="searchResult.companyResult"
+        />
+      </section>
     </div>
   </div>
 </template>
@@ -51,6 +51,7 @@ export default {
 			noResultLabel: '검색 결과가 없습니다.',
 			searchResult: '',
 			isSearchLoaded: false,
+			searchList: [],
 		};
 	},
 
@@ -61,6 +62,12 @@ export default {
 			} else {
 				return false;
 			}
+		},
+	},
+
+	watch: {
+		$route() {
+			this.closeSearch();
 		},
 	},
 
@@ -100,6 +107,9 @@ export default {
 			const item = window.localStorage.getItem('search-list');
 			if (item) {
 				const arr = JSON.parse(item);
+				arr.sort((a, b) => {
+					return b.key - a.key;
+				});
 				this.searchList = arr;
 			}
 		},

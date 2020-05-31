@@ -1,7 +1,7 @@
 <template>
-	<strong :class="`e-strong--${strongClass}`">
-		{{ label }}
-	</strong>
+  <strong :class="`e-strong--${strongClass}`">
+    {{ label }}
+  </strong>
 </template>
 
 <script>

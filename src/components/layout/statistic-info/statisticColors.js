@@ -1,7 +1,7 @@
 export default (function() {
 	const statisticColors = [
 		{
-			name: 'App',
+			name: 'app',
 			backgroundColor: [
 				'#FF7F2D',
 				'#FF9957',
@@ -13,9 +13,8 @@ export default (function() {
 			],
 		},
 		{
-			name: 'Frontend',
+			name: 'frontend',
 			backgroundColor: [
-				'#1F7F78',
 				'#38B089',
 				'#0ACF83',
 				'#3BD99C',
@@ -28,21 +27,29 @@ export default (function() {
 			],
 		},
 		{
-			name: 'Backend',
+			name: 'backend',
 			backgroundColor: [
-				"#546FFF",
-				"#4B86FF",
-				"#548CFF",
-				"#5D92FF",
-				"#6F9EFF",
-				"#7DA8FF",
-				"#8AB0FF",
-				"#99BAFF",
-				"#A5C2FF"
+        '#3C4DD0',
+        '#546FFF',
+        '#4B86FF',
+        '#548CFF',
+        '#5D92FF',
+				'#6F9EFF',
+				'#7DA8FF',
+				'#8AB0FF',
+				'#99BAFF',
+        '#A5C2FF',
+        '#ACC7FF',
+        '#B7CFFF',
+        '#C9DAFF',
+        '#D2E1FF',
+        '#DBE7FF',
+        '#E2ECFF',
+        '#EDF3FF'
 			],
 		},
 		{
-			name: 'UI/UX',
+			name: 'uiux',
 			backgroundColor: [
 				'#D971FF',
 				'#DF86FF',

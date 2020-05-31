@@ -3,11 +3,11 @@
     <AppTitle :label="title" />
     <StackToggleTab @chart-type="setJobDetail" />
     <StackBarChart
-			v-if="isStatisticsLoading"
-			:key="rerenderIndex"
-			:statistics="statistics"
-			:height="chartHeight"
-			:chart-colors="chartColors"
+      v-if="isStatisticsLoading"
+      :key="rerenderIndex"
+      :statistics="statistics"
+      :height="chartHeight"
+      :chart-colors="chartColors"
     />
   </section>
 </template>
@@ -29,7 +29,7 @@ export default {
   data() {
     return {
       title: '통계 정보',
-      jobDetail: 'App',
+      jobDetail: 'app',
       rerenderIndex: 0,
 			isStatisticsLoading: false,
 			statistics: '',
@@ -39,13 +39,13 @@ export default {
   },
 
 	created() {
-		this.setJobDetail('App');
+		this.setJobDetail('app');
 	},
 
   methods: {
 		async setJobDetail(jobDetail) {
 			this.isStatisticsLoading = false;
-			const { item } = await statisticAPI.getStatistics(jobDetail);
+      const { item } = await statisticAPI.getStatistics(jobDetail);
 			const result = this.getSortedStatistics(item);
       this.statistics = result;
 			this.chartHeight = this.statistics.name.length * 25;

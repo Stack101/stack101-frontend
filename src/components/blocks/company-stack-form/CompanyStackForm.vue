@@ -1,29 +1,27 @@
 <template>
-	<ul>
-		<li>
-			<StackToggleBar
-				:title="title"
-				:cnt="cnt"
-				@toggle-status="changeCardsStatus"
-			/>
-		</li>
-		<li
-			v-if="isCardsOpened"
-			class="b-stack-cards"
-		>
-			<StackCard
-				v-for="(card, index) in cards"
-				:key="`stack-${index}`"
-				:title="card.name"
-			/>
-		</li>
-	</ul>
+  <ul>
+    <li>
+      <StackToggleBar
+        :title="title"
+      />
+    </li>
+    <li
+      v-if="isCardsOpened"
+      class="b-stack-cards"
+    >
+      <StackCard
+        v-for="(card, index) in cards"
+        :key="`stack-${index}`"
+        :title="card.name"
+        :logo="card.logo"
+      />
+    </li>
+  </ul>
 </template>
 
 <script>
 	import StackToggleBar from '@/components/blocks/stack-toggle-bar/StackToggleBar.vue';
 	import StackCard from '@/components/blocks/stack-card/StackCard.vue';
-
 
 	export default {
 		components: {
@@ -49,17 +47,10 @@
 		data() {
 			return {
 				stackIcon: 'gg-database',
-				iconClass: 'gg-chevron-down',
 				isCardsOpened: true,
 				btnClass: 'app',
 				strongClass: 'division',
 			};
-		},
-
-		methods: {
-			changeCardsStatus(status) {
-				this.isCardsOpened = status;
-			},
 		},
 	};
 </script>

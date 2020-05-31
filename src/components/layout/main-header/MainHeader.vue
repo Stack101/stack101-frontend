@@ -3,8 +3,14 @@
     <div class="l-header-start">
       <AppIcon
         v-show="isDetailView"
-        :icon-class="backIcon"
+        :icon-class="iconClass"
+        :img-src="backIcon"
         @click.native="backPage"
+      />
+      <AppIcon
+        v-show="isDetailView"
+        :img-src="homeIcon"
+        @click.native="homepage"
       />
     </div>
 
@@ -17,13 +23,15 @@
     <div class="l-header-end">
       <AppIcon
         class="l-header-icon"
-        :icon-class="searchIcon"
+        :class="{ alone: isBookmark }"
+        :img-src="searchIcon"
         @click.native="openSearch"
       />
       <AppIcon
+        v-show="!isBookmark"
         class="l-header-icon"
-        :icon-class="bookmarkIcon"
-				@click.native="openBookmark"
+        :img-src="bookmarkIcon"
+        @click.native="openBookmark"
       />
     </div>
   </Header>
@@ -39,9 +47,11 @@ export default {
 
   data() {
     return {
-			bookmarkIcon: 'gg-bookmark',
-      searchIcon:'gg-search',
-      backIcon: 'gg-chevron-left',
+			bookmarkIcon: 'ic_favorite_off_mobile.svg',
+      searchIcon:'ic_search.svg',
+      backIcon: 'ic_arrow_back.svg',
+			iconClass: 'arrow',
+			homeIcon: 'ic_home.svg',
     };
   },
 
@@ -70,6 +80,9 @@ export default {
       }
       return title;
     },
+		isBookmark() {
+			return this.currentPath === 'bookmark';
+		},
   },
 
   methods: {
@@ -79,6 +92,9 @@ export default {
     backPage() {
       this.$router.go(-1);
     },
+		homepage() {
+			this.$router.push('/');
+		},
 		checkPath(str) {
 			return this.$route.path.includes(str);
 		},
@@ -101,6 +117,8 @@ export default {
 
 .l-header-start {
   justify-self: start;
+	display: grid;
+	grid-template-columns: 32px 32px;
 }
 
 .l-header-end {
@@ -112,9 +130,15 @@ export default {
   justify-self: center;
   align-self: center;
 }
+
 @media screen and (min-width: 1200px) {
   .l-app-header {
     display: none;
   }
+
+.alone {
+	position: absolute;
+	top: 32px;
+	right: 32px;
 }
 </style>

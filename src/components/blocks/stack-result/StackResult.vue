@@ -1,18 +1,18 @@
 <template>
   <div class="b-stack-result">
-		<AppText
-			v-if="isSearchResult"
-			:label="textLabel"
-			:desc-class="textClass"
-		/>
+    <AppText
+      v-if="isSearchResult"
+      :label="textLabel"
+      :desc-class="textClass"
+    />
     <AppCountTitle
-			v-else
-			:label="countLabel"
-		/>
+      v-else
+      :label="countLabel"
+    />
     <ListItem
-			:item-list="stackList"
-			:is-main="isMain"
-		/>
+      :item-list="stackList"
+      :is-main="isMain"
+    />
   </div>
 </template>
 

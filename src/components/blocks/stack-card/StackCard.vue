@@ -1,11 +1,14 @@
 <template>
-	<div class="e-stack-card">
-		<AppThumbnail :thumbnail-class="thumbnailSize" />
-		<AppStrong
-			:strong-class="strongClass"
-			:label="title"
-		/>
-	</div>
+  <div class="e-stack-card">
+    <AppThumbnail
+      :thumbnail-class="thumbnailSize"
+      :thumbnail-img-src="logo"
+    />
+    <AppStrong
+      :strong-class="strongClass"
+      :label="title"
+    />
+  </div>
 </template>
 
 <script>
@@ -22,7 +25,11 @@ export default {
 		title: {
 			type: String,
 			default: '',
-		},
+    },
+    logo: {
+      type: String,
+			default: null,
+    },
 	},
 
 	data() {

@@ -4,9 +4,9 @@
     <StackFilterDropdown @selected-tab="fetchStackResult" />
     <StackResult
       v-if="isStacksLoaded"
-			:stack-list="stackList"
-			:is-main="isMain"
-		/>
+      :stack-list="stackList"
+      :is-main="isMain"
+    />
   </section>
 </template>
 
@@ -37,19 +37,16 @@ export default {
       const tabs = {};
       this.isStacksLoaded = false;
       for (const prop in activeTabs) {
-        tabs[prop] = this.setFirstLetterToUpper(activeTabs[prop]);
+        tabs[prop] = activeTabs[prop];
       }
       if (activeTabs.jobGroup === 'developer') {
-        const { item } = await stackApi.getStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.stackGroup);
+        const { item } = await stackApi.getSpecificStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.stackGroup);
         this.stackList = item;
       } else {
-        const { item } = await stackApi.getStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.toolGroup);
+        const { item } = await stackApi.getSpecificStacks(tabs.jobGroup, tabs.jobGroupDetail, tabs.toolGroup);
         this.stackList = item;
       }
       this.isStacksLoaded = true;
-    },
-    setFirstLetterToUpper(str) {
-      return str.charAt(0).toUpperCase() + str.slice(1);
     },
   },
 };

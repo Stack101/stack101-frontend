@@ -1,7 +1,7 @@
 <template>
-	<span :class="`e-plain-text--${descClass}`">
-		{{ label }}
-	</span>
+  <span :class="`e-plain-text--${descClass}`">
+    {{ label }}
+  </span>
 </template>
 
 <script>

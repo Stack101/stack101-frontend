@@ -1,23 +1,23 @@
 <template>
   <form
-		class="b-search-form"
-		@submit.prevent="ascSearchMsg"
-	>
+    class="b-search-form"
+    @submit.prevent="ascSearchMsg"
+  >
     <div class="b-search-bar">
       <AppIcon
         class="b-search-icon"
-        :icon-class="searchIcon"
+        :img-src="searchIcon"
       />
       <input
         v-model="searchMsg"
         class="b-search-form__input"
         :type="type"
         :placeholder="placeholder"
-      />
+      >
       <AppIcon
         v-show="isTyping"
         class="b-search-icon"
-        :icon-class="closeIcon"
+        :img-src="closeIcon"
         @click.native="initMsg"
       />
     </div>
@@ -26,20 +26,18 @@
 
 <script>
 import AppIcon from '@/components/elements/AppIcon.vue';
-// import AppInput from '@/components/elements/AppInput.vue';
 
 export default {
   components: {
     AppIcon,
-		// AppInput,
   },
 
   data() {
     return {
-      searchIcon:'gg-search',
+      searchIcon:'ic_search.svg',
       type: 'string',
       placeholder: '스택/기업을 입력해주세요.',
-      closeIcon: 'gg-close-o',
+      closeIcon: 'ic_search_delete.svg',
       searchMsg: '',
     };
   },
@@ -54,14 +52,6 @@ export default {
     },
   },
 
-	// watch: {
-  // 	searchMsg: {
-  // 		handler(v) {
-  // 			this.$emit('search-msg', this.searchMsg)
-	// 		}
-	// 	}
-	// },
-
   methods: {
     initMsg() {
       this.searchMsg = '';
@@ -75,7 +65,10 @@ export default {
 
 <style lang="scss" scoped>
 .b-search-form {
+	width: 95%;
+
   &__input {
+    width: 100%;
     border: none;
     background-color: #F3F3F3;
     margin: 0;
@@ -84,13 +77,14 @@ export default {
 }
 .b-search-bar {
   display: grid;
-  align-items: center;
   grid-template-columns: 32px 1fr 32px;
+  align-items: center;
   background-color: #F3F3F3;
   height: 100%;
   border-radius: 4px;
 }
 .b-search-icon {
-  margin: 0 auto;
+	width: 32px;
+	height: 32px;
 }
 </style>

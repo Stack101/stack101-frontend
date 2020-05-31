@@ -1,17 +1,17 @@
 <template>
-	<section class="l-recent-search">
-		<AppTitle :label="titleLabel" />
-		<ul class="l-search-list">
-			<SearchTitleBar
-				class="l-search-item"
-				v-for="item in searchList"
-				:key="item.key"
-				:item-key="item.key"
-				:search-title="item.value"
-				@delete-search="deleteSearch"
-			/>
-		</ul>
-	</section>
+  <section class="l-recent-search">
+    <AppTitle :label="titleLabel" />
+    <ul class="l-search-list">
+      <SearchTitleBar
+        v-for="item in searchList"
+        :key="item.key"
+        class="l-search-item"
+        :item-key="item.key"
+        :search-title="item.value"
+        @delete-search="deleteSearch"
+      />
+    </ul>
+  </section>
 </template>
 
 <script>

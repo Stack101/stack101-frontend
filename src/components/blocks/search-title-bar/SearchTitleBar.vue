@@ -1,22 +1,21 @@
 <template>
-	<li class="b-search-title-bar">
-		<AppText :label="searchTitle" />
-		<AppButton
-			:btn-class="deleteClass"
-			:label="btnText"
-			@button-click="deleteSearch"
-		/>
-	</li>
+  <li class="b-search-title-bar">
+    <AppText :label="searchTitle" />
+    <AppIcon
+      :img-src="deleteIcon"
+      @click.native="deleteSearch"
+    />
+  </li>
 </template>
 
 <script>
 import AppText from "@/components/elements/AppText";
-import AppButton from "@/components/elements/AppButton";
+import AppIcon from "@/components/elements/AppIcon";
 
 export default {
 	components: {
 		AppText,
-		AppButton,
+		AppIcon,
 	},
 
 	props: {
@@ -32,7 +31,7 @@ export default {
 
 	data() {
 		return {
-			deleteClass: 'delete',
+			deleteIcon: 'ic_search_delete.svg',
 			btnText: '삭제',
 		};
 	},

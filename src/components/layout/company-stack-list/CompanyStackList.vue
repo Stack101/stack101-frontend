@@ -1,12 +1,12 @@
 <template>
   <section class="l-company-stack-list">
-		<CompanyStackForm
-			v-for="(value, index) in stackList"
-			:key="`stack-${index}`"
-			:title="value.divisionType"
-			:cnt="value.item.length"
-			:cards="value.item"
-		/>
+    <CompanyStackForm
+      v-for="(value, index) in stackList"
+      :key="`stack-${index}`"
+      :title="value.divisionType"
+      :cnt="value.item.length"
+      :cards="value.item"
+    />
   </section>
 </template>
 
@@ -35,13 +35,13 @@ export default {
 	computed: {
 		developerStacks() {
 			const result = this.stacks.filter(el => {
-				return el.job_type === 'Developer';
+				return el.job_type === 'developer';
 			});
 			return result;
 		},
 		designerStacks() {
 			const result = this.stacks.filter(el => {
-				return el.job_type === 'Designer';
+				return el.job_type === 'designer';
 			});
 			return result;
 		},

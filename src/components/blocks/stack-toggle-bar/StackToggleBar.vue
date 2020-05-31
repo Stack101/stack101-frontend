@@ -1,16 +1,12 @@
 <template>
-		<div class="b-stack-toggle-bar">
-			<AppIcon :icon-class="stackIcon"/>
-			<AppStrong
-				:label="title"
-				:strong-class="strongClass"
-			/>
-			<div>{{ cnt }}</div>
-			<AppIcon
-				:icon-class="iconClass"
-				@click.native="toggleDropDown"
-			/>
-		</div>
+  <div class="b-stack-toggle-bar">
+    <AppIcon :img-src="applicationIcon" />
+    <AppStrong
+      class="b-stack-toggle--title"
+      :label="title"
+      :strong-class="strongClass"
+    />
+  </div>
 </template>
 
 <script>
@@ -28,38 +24,14 @@ export default {
 			type: String,
 			default: '',
 		},
-		cnt: {
-			type: Number,
-			default: 0,
-		},
 	},
 
 	data() {
 		return {
-			stackIcon: 'gg-database',
-			iconClass: 'gg-chevron-down',
-			isDropDown: true,
+			applicationIcon: 'ic_application_mobile.svg',
 			btnClass: 'app',
 			strongClass: 'division',
 		};
-	},
-
-	computed: {
-		toggleCondition() {
-			return this.isToggle ? 'b-stack-tab-btns--toggle' : 'b-stack-tab-btns';
-		},
-	},
-
-	methods: {
-		toggleDropDown() {
-			this.isDropDown = !this.isDropDown;
-			if (this.isDropDown) {
-				this.iconClass = 'gg-chevron-down';
-			} else {
-				this.iconClass = 'gg-chevron-up';
-			}
-			this.$emit('toggle-status', this.isDropDown);
-		},
 	},
 };
 </script>
@@ -81,5 +53,9 @@ export default {
 		height: 0.5px;
 		background-color: #D6D6D6;
 	}
+}
+
+.b-stack-toggle--title {
+	margin-left: 8px;
 }
 </style>

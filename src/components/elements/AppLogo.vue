@@ -2,6 +2,7 @@
   <h1 class="e-logo">
     <img src="~@/assets/images/stack101_logo.svg" alt="Stack101" >
   </h1>
+
 </template>
 
 <script>

@@ -15,7 +15,7 @@
               :key="tab.index"
             >
               <AppButton
-                :btn-class="getBtnClassName(tab.type)"
+                :btn-class="tab.type"
                 :class="getActiveClassName(category.enTitle, tab.type)"
                 :label="tab.title"
                 @button-click="setSelectedTab(category.title, tab.type)"
@@ -52,10 +52,10 @@ export default {
           title: '직군 상세',
           enTitle: 'jobGroupDetail',
           tabs: [
-            { title: 'App 개발', type: 'App' },
-            { title: 'Frontend 개발', type: 'Frontend' },
-            { title: 'Backend 개발', type: 'Backend' },
-            { title: 'UX/UI 디자인', type: 'UI/UX' }
+            { title: 'App 개발', type: 'app' },
+            { title: 'Frontend 개발', type: 'frontend' },
+            { title: 'Backend 개발', type: 'backend' },
+            { title: 'UX/UI 디자인', type: 'uiux' }
           ],
         },
         {
@@ -78,18 +78,18 @@ export default {
       ],
       activeTab: {
         jobGroup: 'developer',
-        jobGroupDetail: 'App',
+        jobGroupDetail: 'app',
         stackGroup: 'language',
       },
       defaultDeveloperTab: {
         jobGroup: 'developer',
-        jobGroupDetail: 'App',
+        jobGroupDetail: 'app',
         stackGroup: 'language',
         toolGroup: 'prototyping',
       },
       defaultDesignerTab: {
         jobGroup: 'designer',
-        jobGroupDetail: 'UI/UX',
+        jobGroupDetail: 'uiux',
         toolGroup: 'prototyping',
       },
     };
@@ -103,7 +103,7 @@ export default {
         if (curr.enTitle === 'jobGroupDetail') {
           const jobGroupDetailTabs = [];
           curr.tabs.forEach(el => {
-            el.type !== 'UI/UX' ? jobGroupDetailTabs.push(el) : null;
+            el.type !== 'uiux' ? jobGroupDetailTabs.push(el) : null;
           });
           acc[i].tabs = [...jobGroupDetailTabs];
         }
@@ -120,7 +120,7 @@ export default {
         if (curr.enTitle === 'jobGroupDetail') {
           const jobGroupDetailTabs = [];
           curr.tabs.forEach(el => {
-            el.type === 'UI/UX' ? jobGroupDetailTabs.push(el) : null;
+            el.type === 'uiux' ? jobGroupDetailTabs.push(el) : null;
           });
           acc[i].tabs = [...jobGroupDetailTabs];
         }
@@ -169,17 +169,10 @@ export default {
           break;
       }
     },
-    getBtnClassName(typeStr) {
-			if (typeStr.includes('/')) {
-				return typeStr.split('/').join('').toLowerCase();
-			} else {
-				return typeStr.toLowerCase();
-			}
-    },
     getActiveClassName(enTitle, currentTab) {
       let style = null;
       if (this.activeTab[enTitle] === currentTab) {
-        style = `e-button--${this.getBtnClassName(currentTab)}--active`;
+        style = `e-button--${currentTab}--active`;
       }
       return style;
     },

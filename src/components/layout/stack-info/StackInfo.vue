@@ -57,4 +57,11 @@ export default {
   padding: 32px 20px;
   background-color: #FFF;
 }
+
+@media screen and (min-width: 1200px) {
+  .l-stack-info {
+    padding: 52px 20px;
+    
+  }
+}
 </style>

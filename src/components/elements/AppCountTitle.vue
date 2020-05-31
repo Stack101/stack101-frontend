@@ -25,4 +25,10 @@ export default {
 .e-count-title strong {
   font-weight: 600;
 }
+
+@media screen and (min-width: 1200px) {
+  .e-count-title {
+    font-size: 16px;
+  }
+}
 </style>

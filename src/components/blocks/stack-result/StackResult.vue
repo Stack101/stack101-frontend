@@ -58,8 +58,14 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .b-stack-result {
   padding: 26px 0;
+}
+
+@media screen and (min-width: 1200px) {
+	.b-stack-result {
+		padding: 40px 0;
+	}
 }
 </style>

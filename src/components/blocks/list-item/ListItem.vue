@@ -130,4 +130,12 @@ export default {
     padding-left: 13px;
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .b-list-item { 
+    ul li {
+      padding: 40px 0 30px;
+    }
+  }
+}
 </style>

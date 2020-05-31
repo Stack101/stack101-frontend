@@ -154,4 +154,17 @@ export default {
 	border: none;
 	padding: 0;
 }
+
+@media screen and (min-width: 1200px) { 
+  .e-button { 
+    height: 42px;
+    padding: 0 16px;
+    font-size: 18px;
+    
+    & > *:first-child {
+      padding-right: 6px;
+      font-size: 10px;
+    }
+  } 
+} 
 </style>

@@ -86,4 +86,22 @@ export default {
 .b-stack-filter-btn {
 	margin-left: auto;
 }
+
+@media screen and (min-width: 1200px) {
+	.b-stack-filter-dropdown {
+    margin: 40px 0 0;
+    padding-bottom: 16px;
+
+    & > li {
+      margin-right: 14px;
+    }
+    & > i {
+      display: none;
+    }
+  }
+  .b-stack-filter-list {
+    display: block !important;
+  }
+}
 </style>
+

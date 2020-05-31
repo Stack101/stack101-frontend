@@ -54,4 +54,27 @@ export default {
   }
 }
 
+@media screen and (min-width: 1200px) { 
+  .e-set-button {
+    & > span {
+      font-size: 24px;
+    }
+
+    &--filter {
+      & > i {
+        margin-right: 8px;
+        width: 23px;
+        height: 23px;
+        background: no-repeat 0 / 23px url('~@/assets/images/icon_filter_btn_512x512.png');
+      }
+    }
+    
+    &--reset {
+      & > i { 
+        margin-right: 14px;
+        height: 18px;
+      }
+    }
+  }    
+}
 </style>

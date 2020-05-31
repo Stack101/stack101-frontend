@@ -93,9 +93,21 @@ export default {
 .l-statistic-info {
   padding: 32px 20px;
   margin-bottom: 16px;
-  background-color: #FFF;
-  & > *:not(:last-child) {
+	background-color: #FFF;
+	
+	& > *:not(:last-child) {
     margin-bottom: 25px;
   }
+}
+
+@media screen and (min-width: 1200px) {
+	.l-statistic-info { 
+		padding-bottom : 100px;
+		margin-bottom: 0;
+
+		& > *:not(:last-child) {
+			margin-bottom: 48px;
+		}
+	}
 }
 </style>

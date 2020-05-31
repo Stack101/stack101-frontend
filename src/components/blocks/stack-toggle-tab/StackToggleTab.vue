@@ -115,4 +115,13 @@ export default {
   top: 0;
   right: 0;
 }
+
+@media screen and (min-width: 1200px) {  
+  .b-stack-toggle-btn {
+    display: none;
+  }
+  .b-stack-tab-btns {
+    grid-gap: 14px;
+  }
+}
 </style>

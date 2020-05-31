@@ -18,5 +18,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+@media screen and (min-width: 1200px) {
+  .v-app-main {
+    
+  }
+}  
 </style>

@@ -58,4 +58,11 @@ export default {
 		align-self: start;
 	}
 }
+@media screen and (min-width: 1200px) {
+	.e-stack-card {
+		row-gap: 8px;
+		width: 150px;
+		height: 128px;
+	}
+}
 </style>

@@ -60,8 +60,7 @@ export default {
 
 @media screen and (min-width: 1200px) {
   .l-stack-info {
-    padding: 52px 20px;
-    
+    padding: 84px 176px 32px;
   }
 }
 </style>

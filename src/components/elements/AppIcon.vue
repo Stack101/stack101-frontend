@@ -44,4 +44,15 @@ export default {
 		height: 32px;
 	}
 }
+
+@media screen and (min-width: 1200px) {
+	.e-icon {
+		
+		&--bookmark {
+			width: 38px;
+			height: 38px;
+		}	
+
+	}		
+}
 </style>

@@ -38,6 +38,11 @@ export default {
 
 @media screen and (min-width: 1200px) {
   .e-description {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    max-width: 1200px;
     font-size: 15px; 
   }
 }

@@ -58,4 +58,18 @@ export default {
 .b-stack-toggle--title {
 	margin-left: 8px;
 }
+
+@media screen and (min-width: 1200px) {
+	.b-stack-toggle-bar {
+		padding: 30px 0;
+		
+		&::after {
+			width: 100%;
+		}
+	}	
+	.b-stack-toggle--title {
+		margin-left: 12px;
+	}
+}
+
 </style>

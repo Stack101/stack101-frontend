@@ -102,7 +102,7 @@ export default {
 
 @media screen and (min-width: 1200px) {
 	.l-statistic-info { 
-		padding-bottom : 100px;
+		padding: 32px 176px;
 		margin-bottom: 0;
 
 		& > *:not(:last-child) {

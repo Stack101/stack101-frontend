@@ -63,4 +63,12 @@
 	padding: 25px 20px;
 	grid-gap: 12px;
 }
+
+@media screen and (min-width: 1200px) {
+	.b-stack-cards {
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+		grid-gap: 26px;
+		border-bottom: solid 1px #D6D6D6;
+	}
+}
 </style>

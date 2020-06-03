@@ -65,10 +65,16 @@ export default {
 
 @media screen and (min-width: 1200px) {
   .e-thumbnail { 
+    &--small {
+      width: 60px;
+      height: 60px;
+    }
+
     &--medium {
       width: 76px;
       height: 76px;
     }
   }    
+  
 }
 </style>

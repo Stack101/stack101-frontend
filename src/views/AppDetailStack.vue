@@ -2,7 +2,8 @@
   <main class="v-detail-stack">
     <DetailInfo
       v-if="stackDetails"
-      :item="stackDetails"
+      :id="stackDetails._id"
+      :cnt="stackDetails.cnt"
       :title="stackDetails.name"
       :description="stackDetails.description"
       :logo="stackDetails.logo"
@@ -11,7 +12,8 @@
       <CompanyList
         v-if="stackDetails"
         :list="stackDetails.companies"
-        :is-detail="isDetail"
+        :detail-type="detailType"
+        :stack-name="stackDetails.name"
       />
     </div>
   </main>
@@ -20,7 +22,7 @@
 <script>
 import DetailInfo from '@/components/layout/detail-info/DetailInfo.vue';
 import CompanyList from '@/components/layout/company-list/CompanyList.vue';
-import { mapActions, mapState } from 'vuex';
+import { mapMutations, mapActions, mapState } from 'vuex';
 
 export default {
   components: {
@@ -30,7 +32,7 @@ export default {
 
 	data() {
 		return {
-      isDetail: true,
+      detailType: 'stack',
 		};
   },
 
@@ -41,6 +43,14 @@ export default {
 			return id;
     },
     ...mapState('stack', ['stackDetails']),
+    ...mapState('bookmark', ['stacks', 'companies']),
+    // result() {
+    //   if (this.stackDetails) {
+    //     this.stackDetails.companies.forEach(el => {
+    //       el._id === 
+    //     })
+    //   }
+    // }
   },
 
   created() {
@@ -49,6 +59,8 @@ export default {
 
 	methods: {
     ...mapActions({ 'setTargetStack': 'stack/setTargetStack' }),
+    ...mapMutations({ 'initStacks': 'bookmark/INIT_STACKS' }),
+    ...mapMutations({ 'initCompanies': 'bookmark/INIT_COMPANIES' }),
   },
 };
 </script>

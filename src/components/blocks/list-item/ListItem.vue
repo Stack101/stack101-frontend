@@ -5,15 +5,19 @@
         v-for="(item, index) in itemList"
         :key="index"
       >
-        <router-link :to="itemPath(item._id, item)">
+        <router-link
+          :to="itemPath(item._id || item.id)"
+        >
           <AppThumbnail
             :thumbnail-class="thumbnailClass"
             :thumbnail-img-src="item.logo"
           />
           <div class="container">
             <FavoriteTitle
-              v-if="isDetail"
-              :title="item.name"
+              v-if="detailType === 'stack'"
+              :item="item"
+              :random-stack="stackName"
+              :type="type"
             />
             <AppStackTitle
               v-else
@@ -44,13 +48,9 @@ export default {
   },
 
   props: {
-		isMain: {
-			type: Boolean,
-			default: false,
-		},
-    isDetail: {
-      type: Boolean,
-      default: false,
+    detailType: {
+      type: String,
+      default: 'company',
     },
 		isSearchResult: {
 			type: Boolean,
@@ -59,7 +59,15 @@ export default {
 		itemList: {
 			type: Array,
 			default: undefined,
-		},
+    },
+    type: {
+      type: String,
+      default: 'stack',
+    },
+    stackName: {
+      type: String,
+      default: undefined,
+    },
   },
 
   data() {
@@ -71,33 +79,18 @@ export default {
   methods: {
     descriptionLabel(item) {
 			let result;
-			let totalNum;
-			switch (true) {
-				case this.isMain:
-					totalNum = item.cnt;
-					result = `${totalNum}개의 기업이 사용 중입니다.`;
-					break;
-				case this.isDetail:
-					result = `${item.name} 외 ${item.cnt}개 사용 중입니다.`;
-					break;
-				default:
-					result = '임시 텍스트';
-					break;
-			}
+      if (this.type === 'stack') {
+        result = `${item.cnt}개의 기업이 사용 중입니다.`;
+      }
+      if (this.type === 'company') {
+        const stackName = this.stackName || item.stackName;
+        result = `${stackName} 외 ${item.cnt}개 사용 중입니다.`;
+      }
 			return result;
     },
-		itemPath(id, item) {
-			const path = this.$route.path.split('/')[1];
-			let result = '';
-			if (item.repStack) {
-				result = `/company/${id}`;
-			} else if (path === 'stack') {
-				result = `/company/${id}`;
-			} else {
-				result = `/stack/${id}`;
-			}
-			return result;
-		},
+    itemPath(id) {
+      return `/${this.type}/${id}`;
+    },
   },
 };
 </script>

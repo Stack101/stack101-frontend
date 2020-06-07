@@ -2,18 +2,16 @@ import stackAPI from '@/api/stack.api.js';
 
 const state = {
   stackDetails: '',
-  bookmarkStacks: [],
 };
 
 const mutations = {
   SET_TARGET_STACK(state, obj) {
+    const bookmarkOption = { isBookmarked: false }; 
+    Object.assign(obj, bookmarkOption);
+    obj.companies.forEach(el => {
+      Object.assign(el, bookmarkOption);
+    });
     state.stackDetails = obj;
-  },
-  ADD_BOOKMARK_COMPANY(state, obj) {
-    state.bookmarkStacks.push(obj);
-    // 북마크 배열에 필요한 정보가 담긴 obj가 쌓인다
-    // store에 저장해야한다
-    // LocalStorage에도 저장되어야 한다
   },
 };
 

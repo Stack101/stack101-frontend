@@ -12,6 +12,7 @@
     <ListItem
       :item-list="stackList"
       :is-main="isMain"
+      :type="type"
     />
   </div>
 </template>
@@ -46,7 +47,8 @@ export default {
 	data() {
 		return {
 			textLabel: '스택',
-			textClass: 'search-result',
+      textClass: 'search-result',
+      type: 'stack',
 		};
 	},
 

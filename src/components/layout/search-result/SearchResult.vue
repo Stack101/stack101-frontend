@@ -2,6 +2,7 @@
   <section class="l-search-result">
     <StackResult
       v-if="isStackSearchList"
+      class="l-search-result--stack"
       :stack-list="stackSearchList"
       :is-search-result="isSearchResult"
     />

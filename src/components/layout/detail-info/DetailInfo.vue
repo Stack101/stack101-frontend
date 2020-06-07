@@ -6,10 +6,11 @@
     />
     <FavoriteTitle
       class="v-detail-stack--title"
-      :title="title"
+      :item="favoriteInfo"
       :strong-class="strongClass"
-      :img-src="favoriteIcon"
-      @click-favorite="setClickFavorite"
+      :type="infoType"
+      :random-stack="randomStack"
+      :cnt="cnt"
     />
     <AppDescription :label="description" />
   </section>
@@ -19,7 +20,6 @@
 import AppThumbnail from '@/components/elements/AppThumbnail.vue';
 import FavoriteTitle from '@/components/blocks/favorite-title/FavoriteTitle.vue';
 import AppDescription from '@/components/elements/AppDescription.vue';
-import { mapMutations } from 'vuex';
 
 export default {
   components: {
@@ -37,13 +37,21 @@ export default {
 			type: String,
 			default: '',
 		},
-		item: {
-			type: Object,
-			default: undefined,
+		cnt: {
+			type: Number,
+			default: 0,
     },
     logo: {
       type: String,
       default: null,
+    },
+    id: {
+      type: String,
+      default: '',
+    },
+    randomStack: {
+      type: String,
+      default: '',
     },
 	},
 
@@ -51,44 +59,31 @@ export default {
     return {
       thumbnailSize: 'medium',
 			strongClass: 'title',
-			isFavorite: false,
     };
   },
 
 	computed: {
-		favoriteIcon() {
-			if (this.isFavorite) {
-				return 'ic_favorite_on_mobile.svg';
-			} else {
-				return 'ic_favorite_off_mobile.svg';
-			}
-		},
 		detailPath() {
 			const pathArr = this.$route.path.split('/');
 			const path = pathArr[1];
 			return path;
-		},
-	},
-
-	methods: {
-		...mapMutations({ 'setStacks': 'bookmark/SET_STACKS' }),
-		...mapMutations({ 'setCompanies': 'bookmark/SET_COMPANIES' }),
-		setClickFavorite() {
-			if (this.isFavorite) {
-				this.isFavorite = false;
-			} else {
-				this.isFavorite = true;
-        this.saveOnStore();
-			}
-		},
-		saveOnStore() {
-			if (this.detailPath === 'stack') {
-				this.setStacks(this.item);
-			} else {
-				this.setCompanies(this.item);
-			}
-		},
-	},
+    },
+    infoType() {
+			const pathArr = this.$route.path.split('/');
+			const id = pathArr[1];
+			return id;
+    },
+    favoriteInfo() {
+      const obj = {
+        id: this.id,
+        name: this.title,
+        description: this.description,
+        cnt: this.cnt,
+        logo: this.logo,
+      };
+      return obj;
+    },
+  },
 };
 </script>
 

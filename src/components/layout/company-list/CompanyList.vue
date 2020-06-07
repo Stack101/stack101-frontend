@@ -10,8 +10,10 @@
       :label="totalNum"
     />
     <ListItem
-      :is-detail="isDetail"
+      :detail-type="detailType"
       :item-list="list"
+      :type="type"
+      :stack-name="stackName"
     />
   </section>
 </template>
@@ -33,20 +35,25 @@ export default {
 			type: Array,
 			default: undefined,
 		},
-		isDetail: {
-			type: Boolean,
-			default: false,
+		detailType: {
+			type: String,
+			default: 'company',
 		},
 		isSearchResult: {
 			type: Boolean,
 			default: false,
-		},
+    },
+    stackName: {
+      type: String,
+      default: undefined,
+    },
 	},
 
 	data() {
 		return {
 			textLabel: '회사',
-			textClass: 'search-result',
+      textClass: 'search-result',
+      type: 'company',
 		};
 	},
 
@@ -61,7 +68,6 @@ export default {
 <style lang="scss" scoped>
 .l-company-list {
   background-color: #fff;
-  margin-top: 16px;
-	padding: 32px 0;
+	padding: 26px 0;
 }
 </style>

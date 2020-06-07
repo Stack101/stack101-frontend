@@ -2,6 +2,7 @@
   <div class="b-stack-filter">
     <ul
       class="b-stack-filter-dropdown"
+      @click.prevent="toggleDropDown"
     >
       <li
         v-for="tab in tabs"
@@ -15,7 +16,6 @@
       <AppIcon
         class="b-stack-filter-btn"
         :img-src="dropDownIcon"
-        @click.native="toggleDropDown"
       />
     </ul>
     <StackFilterList

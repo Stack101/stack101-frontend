@@ -4,12 +4,16 @@
     class="v-detail-company"
   >
     <DetailInfo
+      :id="companyDetails._id"
       :title="companyDetails.name"
       :description="companyDetails.description"
       :logo="companyDetails.logo"
-      :item="companyDetails"
+      :cnt="companyDetails.cnt"
+      :random-stack="randomStack"
     />
-    <CompanyStackList :stacks="companyDetails.stacks" />
+    <CompanyStackList
+      :stacks="companyDetails.stacks"
+    />
   </main>
 </template>
 
@@ -25,12 +29,18 @@ export default {
   },
 
 	computed: {
+    ...mapState('company', ['companyDetails']),
 		routeId() {
 			const pathArr = this.$route.path.split('/');
 			const id = pathArr[pathArr.length - 1];
 			return id;
     },
-    ...mapState('company', ['companyDetails']),
+    randomStack() {
+      const stacks = this.companyDetails.stacks;
+      const length = this.companyDetails.stacks.length;
+      const randomNum = Math.floor(Math.random() * length);
+      return stacks[randomNum].name;
+    },
 	},
 
 	created() {
